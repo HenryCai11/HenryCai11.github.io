@@ -8,14 +8,14 @@ redirect_from:
   - /about.html
 ---
 
-Hi, I'm Min Cai (蔡旻). I'm an M.S. student graduated from Shenzhen University, where I was supervised by [Prof. Haodi Zhang](https://hdzhangust.github.io). Before that, I obtained my B.A. in Translation from Beijing Language and Culture University. Currently, I'm interning at Zhipu AI, mentored by [Dr. Dan Zhang](https://zhangdan0602.github.io). Meanwhile, I also work closely with [Dr. Ziniu Hu](https://acbull.github.io), [Dr. Shichang Zhang](https://shichangzh.github.io), and [Dr. Difan Zou](https://difanzou.github.io).
+Hi, I'm Min Cai (蔡旻). I'm an M.S. student graduated from Shenzhen University, where I was supervised by <a href="https://hdzhangust.github.io" style="text-decoration: none; color: #0366d6; transition: color 0.3s;">Prof. Haodi Zhang</a>. Before that, I obtained my B.A. in Translation from Beijing Language and Culture University. Currently, I'm interning at Zhipu AI, mentored by <a href="https://zhangdan0602.github.io" style="text-decoration: none; color: #0366d6; transition: color 0.3s;">Dr. Dan Zhang</a>. Meanwhile, I also work closely with <a href="https://acbull.github.io" style="text-decoration: none; color: #0366d6; transition: color 0.3s;">Dr. Ziniu Hu</a>, <a href="https://shichangzh.github.io" style="text-decoration: none; color: #0366d6; transition: color 0.3s;">Dr. Shichang Zhang</a>, and <a href="https://difanzou.github.io" style="text-decoration: none; color: #0366d6; transition: color 0.3s;">Dr. Difan Zou</a>.
 
 I have broad interests in NLP, particularly in understanding the mechanisms of neural language models (LMs) and, in turn, contributing to a better understanding of human nature and benefiting societal good.
 
 Specifically, my current research focuses on:
-- **LLM understanding** (mechanistic interpretability, e.g., [SelfControl](https://llm-self-control.github.io)) and **evaluation** (e.g., [AvalonBench](https://avalonbench.github.io) and DataSciBench).
-- **LLM control/alignment** using representation engineering (e.g., [SelfControl](https://llm-self-control.github.io)).
-- **LLM game agents** that are capable of solving complex tasks (e.g., [Strategist](https://llm-strategist.github.io))
+- **LLM understanding** (mechanistic interpretability, e.g., <a href="https://llm-self-control.github.io" style="text-decoration: none; color: #0366d6; transition: color 0.3s;">SelfControl</a>) and **evaluation** (e.g., <a href="https://avalonbench.github.io" style="text-decoration: none; color: #0366d6; transition: color 0.3s;">AvalonBench</a> and DataSciBench).
+- **LLM control/alignment** using representation engineering (e.g., <a href="https://llm-self-control.github.io" style="text-decoration: none; color: #0366d6; transition: color 0.3s;">SelfControl</a>).
+- **LLM game agents** that are capable of solving complex tasks (e.g., <a href="https://llm-strategist.github.io" style="text-decoration: none; color: #0366d6; transition: color 0.3s;">Strategist</a>).
 
 
 ## Selected Publications
