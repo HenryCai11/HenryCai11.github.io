@@ -4,7 +4,7 @@ collection: teaching
 type: "Undergraduate course -- Compiler"
 permalink: /teaching/2022-spring-compiler-ta
 venue: "Shenzhen University"
-date: 2022-09-01
+date: 2023-09-01
 location: "Shenzhen, China"
 ---
 
