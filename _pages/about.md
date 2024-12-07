@@ -20,10 +20,11 @@ Specifically, my current research focuses on:
 
 ## Selected Publications
 
+### AvalonBench: Evaluating LLMs Playing the Game of Avalon
+
+Jonathan Light*, Min Cai*, Sheng Shen, Ziniu Hu (*equal contribution)
 <!-- Text and Buttons Section -->
 <div>
-  <h3>AvalonBench: Evaluating LLMs Playing the Game of Avalon</h3>
-  <p>Jonathan Light*, Min Cai*, Sheng Shen, Ziniu Hu (*equal contribution)</p>
   <div style="display: flex; align-items: center;">
     <!-- Figure Section -->
     <div style="flex-shrink: 0; margin-right: 15px;">
@@ -42,7 +43,7 @@ Specifically, my current research focuses on:
           </button>
         </a>
       </p>
-      <p>We propose AvalonBench, a benchmark that explores the potential of Large Language Models (LLMs) Agents in playing the strategic social deduction game, Resistance Avalon. In this benchmark, we not only evaluate LLMs' decision making against bayesian-inference based bots, but also allow multi-agent game-play where LLMs can chat with each other as is playing a real Avalon game.
+      <p>We propose AvalonBench, a benchmark that explores the potential of Large Language Models (LLMs) Agents in playing the strategic social deduction game, Resistance Avalon.
       </p>
       <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/jonathanmli/Avalon-LLM?logo=github&style=flat-square">
     </div>
@@ -74,7 +75,7 @@ Specifically, my current research focuses on:
         </a>
       </p>
       <p>
-        We propose SelfControl, an inference time LLM control method that leverages LLM self-evaluation to control model behaviors through representation engineering. With SelfControl, one can achieve arbitrary control using just one-liner of natural language. SelfControl-prefix is further proposed to compress the representations into PrefixControllers for portable and compositable control.
+        We propose SelfControl, an inference time LLM control method that leverages LLM self-evaluation to control model behaviors through representation engineering.
       </p>
       <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/HenryCai11/LLM-Self-Control?logo=github&style=flat-square">
     </div>
@@ -103,7 +104,9 @@ Specifically, my current research focuses on:
           </button>
         </a>
       </p>
-      <p>We propose Strategist, an advanced game agent that utilizes LLMs to acquire new skills for playing multi-agent games through a self-improvement process. Our method gathers quality feedback through self-play simulations with Monte Carlo tree search and LLM-based reflection, which can then be used to learn high-level strategic skills such as how to evaluate states that guide the low-level execution.</p>
+      <p>
+        We propose Strategist, an advanced game agent that utilizes LLMs to acquire new skills for playing multi-agent games through a self-improvement process.
+      </p>
       <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/jonathanmli/Avalon-LLM?logo=github&style=flat-square">
     </div>
   </div>
