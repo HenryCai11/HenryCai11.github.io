@@ -20,89 +20,91 @@ Specifically, my current research focuses on:
 
 ## Selected Publications
 
-<div style="display: flex; align-items: center;">
-  <!-- Figure Section -->
-  <div style="flex-shrink: 0; margin-right: 15px;">
-    <img src="../images/avalonbench-fig.png" alt="AvalonBench Figure" style="max-width: 250px; border-radius: 8px;">
-  </div>
-
-  <!-- Text and Buttons Section -->
-  <div>
-    <h3>AvalonBench: Evaluating LLMs Playing the Game of Avalon</h3>
-    <p>Jonathan Light*, Min Cai*, Sheng Shen, Ziniu Hu (*equal contribution)</p>
-    <p>We propose AvalonBench, a benchmark that explores the potential of Large Language Models (LLMs) Agents in playing the strategic social deduction game, Resistance Avalon. In this benchmark, we not only evaluate LLMs' decision making against bayesian-inference based bots, but also allow multi-agent game-play where LLMs can chat with each other as is playing a real Avalon game.</p>
-    <p>
+<!-- Text and Buttons Section -->
+<div>
+  <h3>AvalonBench: Evaluating LLMs Playing the Game of Avalon</h3>
+  <p>Jonathan Light*, Min Cai*, Sheng Shen, Ziniu Hu (*equal contribution)</p>
+  <div style="display: flex; align-items: center;">
+    <!-- Figure Section -->
+    <div style="flex-shrink: 0; margin-right: 15px;">
+      <img src="../images/avalonbench-fig.png" alt="AvalonBench Figure" style="max-width: 300px; border-radius: 8px;">
+    </div>
+    <div>
+      <p>
+        <a href="https://github.com/jonathanmli/Avalon-LLM/" target="_blank" style="text-decoration:none;">
+          <button style="padding:6px 6px; background-color:#0366d6; color:white; border:none; border-radius:3px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
+            Code
+          </button>
+        </a>
+        <a href="https://arxiv.org/abs/2310.05036" target="_blank" style="text-decoration:none;">
+          <button style="padding:6px 6px; background-color:#0366d6; color:white; border:none; border-radius:3px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
+            Paper
+          </button>
+        </a>
+      </p>
+      <p>We propose AvalonBench, a benchmark that explores the potential of Large Language Models (LLMs) Agents in playing the strategic social deduction game, Resistance Avalon. In this benchmark, we not only evaluate LLMs' decision making against bayesian-inference based bots, but also allow multi-agent game-play where LLMs can chat with each other as is playing a real Avalon game.
+      </p>
       <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/jonathanmli/Avalon-LLM?logo=github&style=flat-square">
-    </p>
-    <p>
-      <a href="https://github.com/jonathanmli/Avalon-LLM/" target="_blank" style="text-decoration:none;">
-        <button style="padding:8px 8px; background-color:#0366d6; color:white; border:none; border-radius:6px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
-          Code
-        </button>
-      </a>
-      <a href="https://github.com/jonathanmli/Avalon-LLM/" target="_blank" style="text-decoration:none;">
-        <button style="padding:8px 8px; background-color:#0366d6; color:white; border:none; border-radius:6px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
-          Paper
-        </button>
-      </a>
-    </p>
+    </div>
   </div>
 </div>
 
 
-<div style="display: flex; align-items: center;">
-  <!-- Figure Section -->
-  <div style="flex-shrink: 0; margin-right: 15px;">
-    <img src="../images/selfcontrol-fig.png" alt="SelfControl Figure" style="max-width: 250px; border-radius: 8px;">
-  </div>
-
-  <div>
-    <h3>Self-Control of LLM Behaviors by Compressing Suffix Gradient into Prefix Controller</h3>
-    <p>Min Cai, Yuchen Zhang, Shichang Zhang, Fan Yin, Dan Zhang, Difan Zou, Yisong Yue, Ziniu Hu</p>
-    <p>We propose SelfControl, an inference time LLM control method that leverages LLM self-evaluation to control model behaviors through representation engineering. With SelfControl, one can achieve arbitrary control using just one-liner of natural language. SelfControl-prefix is further proposed to compress the representations into PrefixControllers for portable and compositable control.</p>
-    <p>
+<!-- Figure Section -->
+<div>
+  <h3>Self-Control of LLM Behaviors by Compressing Suffix Gradient into Prefix Controller</h3>
+  <p>Min Cai, Yuchen Zhang, Shichang Zhang, Fan Yin, Dan Zhang, Difan Zou, Yisong Yue, Ziniu Hu</p>
+  <div style="display: flex; align-items: center;">
+    <!-- Image Section -->
+    <div style="flex-shrink: 0; margin-right: 15px;">
+      <img src="../images/selfcontrol-fig.png" alt="SelfControl Figure" style="max-width: 300px; border-radius: 8px;">
+    </div>
+    <!-- Text Section -->
+    <div>
+      <p>
+        <a href="https://github.com/HenryCai11/LLM-Self-Control" target="_blank" style="text-decoration:none;">
+          <button style="padding:6px 6px; background-color:#0366d6; color:white; border:none; border-radius:3px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
+            Code
+          </button>
+        </a>
+        <a href="https://arxiv.org/abs/2406.02721" target="_blank" style="text-decoration:none;">
+          <button style="padding:6px 6px; background-color:#0366d6; color:white; border:none; border-radius:3px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
+            Preprint
+          </button>
+        </a>
+      </p>
+      <p>
+        We propose SelfControl, an inference time LLM control method that leverages LLM self-evaluation to control model behaviors through representation engineering. With SelfControl, one can achieve arbitrary control using just one-liner of natural language. SelfControl-prefix is further proposed to compress the representations into PrefixControllers for portable and compositable control.
+      </p>
       <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/HenryCai11/LLM-Self-Control?logo=github&style=flat-square">
-    </p>
-    <p>
-      <a href="https://github.com/HenryCai11/LLM-Self-Control" target="_blank" style="text-decoration:none;">
-        <button style="padding:8px 8px; background-color:#0366d6; color:white; border:none; border-radius:6px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
-          Code
-        </button>
-      </a>
-      <a href="https://arxiv.org/abs/2406.02721" target="_blank" style="text-decoration:none;">
-        <button style="padding:8px 8px; background-color:#0366d6; color:white; border:none; border-radius:6px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
-          Preprint
-        </button>
-      </a>
-    </p>
+    </div>
   </div>
 </div>
 
-<div style="display: flex; align-items: center;">
-  <!-- Figure Section -->
-  <div style="flex-shrink: 0; margin-right: 15px;">
-    <img src="../images/strategist-fig.png" alt="Strategist Figure" style="max-width: 250px; border-radius: 8px;">
-  </div>
-
-  <!-- Text and Buttons Section -->
-  <div>
-    <h3>Strategist: Learning Strategic Skills by LLMs via Bi-Level Tree Search</h3>
-    <p>Jonathan Light, Min Cai, Weiqin Chen, Guanzhi Wang, Xiusi Chen, Wei Cheng, Yisong Yue, Ziniu Hu</p>
-    <p>We propose Strategist, an advanced game agent that utilizes LLMs to acquire new skills for playing multi-agent games through a self-improvement process. Our method gathers quality feedback through self-play simulations with Monte Carlo tree search and LLM-based reflection, which can then be used to learn high-level strategic skills such as how to evaluate states that guide the low-level execution.</p>
-    <p>
+<!-- Text and Buttons Section -->
+<div>
+  <h3>Strategist: Learning Strategic Skills by LLMs via Bi-Level Tree Search</h3>
+  <p>Jonathan Light, Min Cai, Weiqin Chen, Guanzhi Wang, Xiusi Chen, Wei Cheng, Yisong Yue, Ziniu Hu</p>
+  <div style="display: flex; align-items: center;">
+    <!-- Figure Section -->
+    <div style="flex-shrink: 0; margin-right: 15px;">
+      <img src="../images/strategist-fig.png" alt="Strategist Figure" style="max-width: 200px; border-radius: 8px;">
+    </div>
+    <div>
+      <p>
+        <a href="https://github.com/jonathanmli/Avalon-LLM/" target="_blank" style="text-decoration:none;">
+          <button style="padding:6px 6px; background-color:#0366d6; color:white; border:none; border-radius:3px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
+            Code
+          </button>
+        </a>
+        <a href="https://arxiv.org/abs/2408.10635" target="_blank" style="text-decoration:none;">
+          <button style="padding:6px 6px; background-color:#0366d6; color:white; border:none; border-radius:3px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
+            Preprint
+          </button>
+        </a>
+      </p>
+      <p>We propose Strategist, an advanced game agent that utilizes LLMs to acquire new skills for playing multi-agent games through a self-improvement process. Our method gathers quality feedback through self-play simulations with Monte Carlo tree search and LLM-based reflection, which can then be used to learn high-level strategic skills such as how to evaluate states that guide the low-level execution.</p>
       <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/jonathanmli/Avalon-LLM?logo=github&style=flat-square">
-    </p>
-    <p>
-      <a href="https://github.com/jonathanmli/Avalon-LLM/" target="_blank" style="text-decoration:none;">
-        <button style="padding:8px 8px; background-color:#0366d6; color:white; border:none; border-radius:6px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
-          Code
-        </button>
-      </a>
-      <a href="https://arxiv.org/abs/2408.10635" target="_blank" style="text-decoration:none;">
-        <button style="padding:8px 8px; background-color:#0366d6; color:white; border:none; border-radius:6px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
-          Preprint
-        </button>
-      </a>
-    </p>
+    </div>
   </div>
 </div>
