@@ -20,15 +20,17 @@ Specifically, my current research focuses on:
 
 ## Selected Publications
 
-### AvalonBench: Evaluating LLMs Playing the Game of Avalon
-
-Jonathan Light*, Min Cai*, Sheng Shen, Ziniu Hu (*equal contribution)
 <!-- Text and Buttons Section -->
 <div>
+  <h3>AvalonBench: Evaluating LLMs Playing the Game of Avalon</h3>
+  <p>
+    Jonathan Light*, Min Cai*, Sheng Shen, Ziniu Hu (*equal contribution)
+    <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/jonathanmli/Avalon-LLM?logo=github&style=flat-square">
+  </p>
   <div style="display: flex; align-items: center;">
     <!-- Figure Section -->
     <div style="flex-shrink: 0; margin-right: 15px;">
-      <img src="../images/avalonbench-fig.png" alt="AvalonBench Figure" style="max-width: 300px; border-radius: 8px;">
+      <img src="../images/avalonbench-fig.png" alt="AvalonBench Figure" style="max-width: 350px; border-radius: 8px;">
     </div>
     <div>
       <p>
@@ -45,7 +47,6 @@ Jonathan Light*, Min Cai*, Sheng Shen, Ziniu Hu (*equal contribution)
       </p>
       <p>We propose AvalonBench, a benchmark that explores the potential of Large Language Models (LLMs) Agents in playing the strategic social deduction game, Resistance Avalon.
       </p>
-      <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/jonathanmli/Avalon-LLM?logo=github&style=flat-square">
     </div>
   </div>
 </div>
@@ -54,11 +55,15 @@ Jonathan Light*, Min Cai*, Sheng Shen, Ziniu Hu (*equal contribution)
 <!-- Figure Section -->
 <div>
   <h3>Self-Control of LLM Behaviors by Compressing Suffix Gradient into Prefix Controller</h3>
-  <p>Min Cai, Yuchen Zhang, Shichang Zhang, Fan Yin, Dan Zhang, Difan Zou, Yisong Yue, Ziniu Hu</p>
+  <p>
+    Min Cai, Yuchen Zhang, Shichang Zhang, Fan Yin, Dan Zhang, Difan Zou, Yisong Yue, Ziniu Hu
+    <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/HenryCai11/LLM-Self-Control?logo=github&style=flat-square">
+  </p>
+
   <div style="display: flex; align-items: center;">
     <!-- Image Section -->
     <div style="flex-shrink: 0; margin-right: 15px;">
-      <img src="../images/selfcontrol-fig.png" alt="SelfControl Figure" style="max-width: 300px; border-radius: 8px;">
+      <img src="../images/selfcontrol-fig.png" alt="SelfControl Figure" style="max-width: 350px; border-radius: 8px;">
     </div>
     <!-- Text Section -->
     <div>
@@ -77,7 +82,6 @@ Jonathan Light*, Min Cai*, Sheng Shen, Ziniu Hu (*equal contribution)
       <p>
         We propose SelfControl, an inference time LLM control method that leverages LLM self-evaluation to control model behaviors through representation engineering.
       </p>
-      <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/HenryCai11/LLM-Self-Control?logo=github&style=flat-square">
     </div>
   </div>
 </div>
@@ -85,7 +89,10 @@ Jonathan Light*, Min Cai*, Sheng Shen, Ziniu Hu (*equal contribution)
 <!-- Text and Buttons Section -->
 <div>
   <h3>Strategist: Learning Strategic Skills by LLMs via Bi-Level Tree Search</h3>
-  <p>Jonathan Light, Min Cai, Weiqin Chen, Guanzhi Wang, Xiusi Chen, Wei Cheng, Yisong Yue, Ziniu Hu</p>
+  <p>
+    Jonathan Light, Min Cai, Weiqin Chen, Guanzhi Wang, Xiusi Chen, Wei Cheng, Yisong Yue, Ziniu Hu
+    <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/jonathanmli/Avalon-LLM?logo=github&style=flat-square">
+  </p>
   <div style="display: flex; align-items: center;">
     <!-- Figure Section -->
     <div style="flex-shrink: 0; margin-right: 15px;">
@@ -104,10 +111,7 @@ Jonathan Light*, Min Cai*, Sheng Shen, Ziniu Hu (*equal contribution)
           </button>
         </a>
       </p>
-      <p>
-        We propose Strategist, an advanced game agent that utilizes LLMs to acquire new skills for playing multi-agent games through a self-improvement process.
-      </p>
-      <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/jonathanmli/Avalon-LLM?logo=github&style=flat-square">
+      <p>We propose Strategist, an advanced game agent that utilizes LLMs to acquire new skills for playing multi-agent games through a self-improvement process.</p>
     </div>
   </div>
 </div>
