@@ -51,6 +51,7 @@ Specifically, my current research focuses on:
   </div>
 </div>
 
+----
 
 <!-- Figure Section -->
 <div>
@@ -86,6 +87,7 @@ Specifically, my current research focuses on:
   </div>
 </div>
 
+----
 <!-- Text and Buttons Section -->
 <div>
   <h3>Strategist: Learning Strategic Skills by LLMs via Bi-Level Tree Search</h3>
