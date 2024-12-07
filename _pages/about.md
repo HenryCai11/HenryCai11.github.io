@@ -18,7 +18,7 @@ Specifically, my current research focuses on:
 - **LLM game agents** that are capable of solving complex tasks (e.g., <a href="https://llm-strategist.github.io" style="text-decoration: none; color: #0366d6; transition: color 0.3s;">Strategist</a>).
 
 
-## Selected Publications
+# Selected Publications
 
 <!-- Text and Buttons Section -->
 <div>
