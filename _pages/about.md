@@ -27,25 +27,30 @@ Specifically, my current research focuses on:
     Jonathan Light*, <b>Min Cai*</b>, Sheng Shen, Ziniu Hu (*equal contribution)
     <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/jonathanmli/Avalon-LLM?logo=github&style=flat-square">
   </p>
+  <p>
+    <a href="https://github.com/jonathanmli/Avalon-LLM/" target="_blank" style="text-decoration:none;">
+      <button style="padding:6px 6px; background-color:#0366d6; color:white; border:none; border-radius:3px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
+        Code
+      </button>
+    </a>
+    <a href="https://arxiv.org/abs/2310.05036" target="_blank" style="text-decoration:none;">
+      <button style="padding:6px 6px; background-color:#0366d6; color:white; border:none; border-radius:3px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
+        Paper
+      </button>
+    </a>
+    <a href="https://avalonbench.github.io" target="_blank" style="text-decoration:none;">
+      <button style="padding:6px 6px; background-color:#0366d6; color:white; border:none; border-radius:3px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
+        Website
+      </button>
+    </a>
+  </p>
   <div style="display: flex; align-items: center;">
     <!-- Figure Section -->
     <div style="flex-shrink: 0; margin-right: 15px;">
       <img src="../images/avalonbench-fig.png" alt="AvalonBench Figure" style="max-width: 350px; border-radius: 8px;">
     </div>
     <div>
-      <p>
-        <a href="https://github.com/jonathanmli/Avalon-LLM/" target="_blank" style="text-decoration:none;">
-          <button style="padding:6px 6px; background-color:#0366d6; color:white; border:none; border-radius:3px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
-            Code
-          </button>
-        </a>
-        <a href="https://arxiv.org/abs/2310.05036" target="_blank" style="text-decoration:none;">
-          <button style="padding:6px 6px; background-color:#0366d6; color:white; border:none; border-radius:3px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
-            Paper
-          </button>
-        </a>
-      </p>
-      <p>We propose AvalonBench, a benchmark that explores the potential of Large Language Models (LLMs) Agents in playing the strategic social deduction game, Resistance Avalon.
+      <p>AvalonBench is a benchmark that explores the potential of Large Language Models (LLMs) Agents in playing the strategic social deduction game, Resistance Avalon.
       </p>
     </div>
   </div>
@@ -60,7 +65,23 @@ Specifically, my current research focuses on:
     <b>Min Cai</b>, Yuchen Zhang, Shichang Zhang, Fan Yin, Dan Zhang, Difan Zou, Yisong Yue, Ziniu Hu
     <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/HenryCai11/LLM-Self-Control?logo=github&style=flat-square">
   </p>
-
+  <p>
+    <a href="https://github.com/HenryCai11/LLM-Self-Control" target="_blank" style="text-decoration:none;">
+      <button style="padding:6px 6px; background-color:#0366d6; color:white; border:none; border-radius:3px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
+        Code
+      </button>
+    </a>
+    <a href="https://arxiv.org/abs/2406.02721" target="_blank" style="text-decoration:none;">
+      <button style="padding:6px 6px; background-color:#0366d6; color:white; border:none; border-radius:3px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
+        Preprint
+      </button>
+    </a>
+    <a href="https://llm-self-control.github.io" target="_blank" style="text-decoration:none;">
+      <button style="padding:6px 6px; background-color:#0366d6; color:white; border:none; border-radius:3px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
+        Website
+      </button>
+    </a>
+  </p>
   <div style="display: flex; align-items: center;">
     <!-- Image Section -->
     <div style="flex-shrink: 0; margin-right: 15px;">
@@ -69,19 +90,7 @@ Specifically, my current research focuses on:
     <!-- Text Section -->
     <div>
       <p>
-        <a href="https://github.com/HenryCai11/LLM-Self-Control" target="_blank" style="text-decoration:none;">
-          <button style="padding:6px 6px; background-color:#0366d6; color:white; border:none; border-radius:3px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
-            Code
-          </button>
-        </a>
-        <a href="https://arxiv.org/abs/2406.02721" target="_blank" style="text-decoration:none;">
-          <button style="padding:6px 6px; background-color:#0366d6; color:white; border:none; border-radius:3px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
-            Preprint
-          </button>
-        </a>
-      </p>
-      <p>
-        We propose SelfControl, an inference time LLM control method that leverages LLM self-evaluation to control model behaviors through representation engineering.
+        SelfControl is an inference time LLM control method that leverages LLM self-evaluation to control model behaviors through representation engineering.
       </p>
     </div>
   </div>
@@ -95,25 +104,30 @@ Specifically, my current research focuses on:
     Jonathan Light, <b>Min Cai</b>, Weiqin Chen, Guanzhi Wang, Xiusi Chen, Wei Cheng, Yisong Yue, Ziniu Hu
     <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/jonathanmli/Avalon-LLM?logo=github&style=flat-square">
   </p>
+  <p>
+    <a href="https://github.com/jonathanmli/Avalon-LLM/" target="_blank" style="text-decoration:none;">
+      <button style="padding:6px 6px; background-color:#0366d6; color:white; border:none; border-radius:3px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
+        Code
+      </button>
+    </a>
+    <a href="https://arxiv.org/abs/2408.10635" target="_blank" style="text-decoration:none;">
+      <button style="padding:6px 6px; background-color:#0366d6; color:white; border:none; border-radius:3px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
+        Preprint
+      </button>
+    </a>
+    <a href="https://llm-strategist.github.io" target="_blank" style="text-decoration:none;">
+      <button style="padding:6px 6px; background-color:#0366d6; color:white; border:none; border-radius:3px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
+        Website
+      </button>
+    </a>
+  </p>
   <div style="display: flex; align-items: center;">
     <!-- Figure Section -->
     <div style="flex-shrink: 0; margin-right: 15px;">
       <img src="../images/strategist-fig.png" alt="Strategist Figure" style="max-width: 200px; border-radius: 8px;">
     </div>
     <div>
-      <p>
-        <a href="https://github.com/jonathanmli/Avalon-LLM/" target="_blank" style="text-decoration:none;">
-          <button style="padding:6px 6px; background-color:#0366d6; color:white; border:none; border-radius:3px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
-            Code
-          </button>
-        </a>
-        <a href="https://arxiv.org/abs/2408.10635" target="_blank" style="text-decoration:none;">
-          <button style="padding:6px 6px; background-color:#0366d6; color:white; border:none; border-radius:3px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
-            Preprint
-          </button>
-        </a>
-      </p>
-      <p>We propose Strategist, an advanced game agent that utilizes LLMs to acquire new skills for playing multi-agent games through a self-improvement process.</p>
+      <p>Strategist is an advanced game agent that utilizes LLMs to acquire new skills for playing multi-agent games through a self-improvement process.</p>
     </div>
   </div>
 </div>
