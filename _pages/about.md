@@ -10,12 +10,12 @@ redirect_from:
 
 Hi, I'm Min Cai (蔡旻). I'm an M.S. student graduated from Shenzhen University, where I was supervised by <a href="https://hdzhangust.github.io" style="text-decoration: none; color: #0366d6; transition: color 0.3s;">Prof. Haodi Zhang</a>. Before that, I obtained my B.A. in Translation from Beijing Language and Culture University. Currently, I'm interning at Zhipu AI, mentored by <a href="https://zhangdan0602.github.io" style="text-decoration: none; color: #0366d6; transition: color 0.3s;">Dr. Dan Zhang</a>. Meanwhile, I also work closely with <a href="https://acbull.github.io" style="text-decoration: none; color: #0366d6; transition: color 0.3s;">Dr. Ziniu Hu</a>, <a href="https://shichangzh.github.io" style="text-decoration: none; color: #0366d6; transition: color 0.3s;">Dr. Shichang Zhang</a>, and <a href="https://difanzou.github.io" style="text-decoration: none; color: #0366d6; transition: color 0.3s;">Dr. Difan Zou</a>.
 
-I have broad interests in NLP, particularly in understanding the mechanisms of neural language models (LMs) and, in turn, contributing to a better understanding of human nature and benefiting societal good.
+I have broad interests in ML and NLP, particularly in understanding the mechanisms behind neural language models (LMs), developing LLM agents capable of solving complex problems, and enhancing LLM reasoning abilities. **Currently, my primary focus is on inference-time algorithms for alignment and reasoning in LLMs.**
 
 Specifically, my current research focuses on:
-- **LLM understanding** (mechanistic interpretability, e.g., <a href="https://llm-self-control.github.io" style="text-decoration: none; color: #0366d6; transition: color 0.3s;">SelfControl</a>) and **evaluation** (e.g., <a href="https://avalonbench.github.io" style="text-decoration: none; color: #0366d6; transition: color 0.3s;">AvalonBench</a> and DataSciBench).
-- **LLM control/alignment** using representation engineering (e.g., <a href="https://llm-self-control.github.io" style="text-decoration: none; color: #0366d6; transition: color 0.3s;">SelfControl</a>).
-- **LLM game agents** that are capable of solving complex tasks (e.g., <a href="https://llm-strategist.github.io" style="text-decoration: none; color: #0366d6; transition: color 0.3s;">Strategist</a>).
+- **Interpreting and controlling LLM behaviors** for better alignment with human values (e.g., <a href="https://llm-self-control.github.io" style="text-decoration: none; color: #0366d6; transition: color 0.3s;">SelfControl</a>)
+- **LLM Agents** capable of solving complex tasks, such as multi-agent social deduction games(e.g., <a href="https://avalonbench.github.io" style="text-decoration: none; color: #0366d6; transition: color 0.3s;">AvalonBench</a>)
+- **Improving LLM reasoning abilities**, particularly by introducing advanced inference-time algorithms like Monte Carlo tree search (e.g., <a href="https://llm-strategist.github.io" style="text-decoration: none; color: #0366d6; transition: color 0.3s;">Strategist</a>), controlled text generation and representation engineering.
 
 
 # Selected Publications
@@ -50,7 +50,8 @@ Specifically, my current research focuses on:
       <img src="../images/avalonbench-fig.png" alt="AvalonBench Figure" style="max-width: 350px; border-radius: 8px;">
     </div>
     <div>
-      <p>AvalonBench is a benchmark that explores the potential of Large Language Models (LLMs) Agents in playing the strategic social deduction game, Resistance Avalon.
+      <p>
+        <i>AvalonBench is a benchmark that explores the potential of Large Language Models (LLMs) Agents in playing the strategic social deduction game, Resistance Avalon.</i>
       </p>
     </div>
   </div>
@@ -90,7 +91,7 @@ Specifically, my current research focuses on:
     <!-- Text Section -->
     <div>
       <p>
-        SelfControl is an inference time LLM control method that leverages LLM self-evaluation to control model behaviors through representation engineering.
+        <i>SelfControl is an inference time LLM control method that leverages LLM self-evaluation to control model behaviors through representation engineering.</i>
       </p>
     </div>
   </div>
@@ -127,7 +128,9 @@ Specifically, my current research focuses on:
       <img src="../images/strategist-fig.png" alt="Strategist Figure" style="max-width: 200px; border-radius: 8px;">
     </div>
     <div>
-      <p>Strategist is an advanced game agent that utilizes LLMs to acquire new skills for playing multi-agent games through a self-improvement process.</p>
+      <p>
+        <i>Strategist is an advanced game agent that utilizes LLMs to acquire new skills for playing multi-agent games through a self-improvement process.</i>
+      </p>
     </div>
   </div>
 </div>
