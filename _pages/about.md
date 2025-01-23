@@ -100,7 +100,7 @@ Specifically, my current research focuses on:
 ----
 <!-- Text and Buttons Section -->
 <div>
-  <h3>Strategist: Learning Strategic Skills by LLMs via Bi-Level Tree Search</h3>
+  <h3>Strategist: Learning Strategic Skills by LLMs via Bi-Level Tree Search (ICLR 2025)</h3>
   <p>
     Jonathan Light, <b>Min Cai</b>, Weiqin Chen, Guanzhi Wang, Xiusi Chen, Wei Cheng, Yisong Yue, Ziniu Hu
     <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/jonathanmli/Avalon-LLM?logo=github&style=flat-square">
