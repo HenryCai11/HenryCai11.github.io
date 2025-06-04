@@ -21,7 +21,7 @@ Specifically, my current research focuses on:
 # Selected Publications
 
 <div>
-  <h2>How Post-Training Reshapes LLMs: A Mechanistic View on Knowledge, Truthfulness, Refusal, and Confidence</h3>
+  <h2>How Post-Training Reshapes LLMs: A Mechanistic View on Knowledge, Truthfulness, Refusal, and Confidence</h2>
   <p>
     Hongzhe Du*, Weikai Li*, <b>Min Cai</b>, Karim Saraipour, Zimin Zhang, Himabindu Lakkaraju, Yizhou Sun, Shichang Zhang (*equal contribution)
   </p>
