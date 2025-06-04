@@ -115,6 +115,9 @@ Specifically, my current research focuses on:
       </button>
     </a>
   </p>
+  <div style="border-left: 4px solid #007ACC; padding: 1em; background-color: #f0f8ff; margin: 1em 0; color: #000;">
+    <p style="margin: 0;"><strong>Workshop on Foundation Models in the Wild & Mechanistic Interpretability Workshop, ICML 2024</strong></p>
+  </div>
   <div style="display: flex; align-items: center;">
     <!-- Image Section -->
     <div style="flex-shrink: 0; margin-right: 15px;">
@@ -155,6 +158,9 @@ Specifically, my current research focuses on:
       </button>
     </a>
   </p>
+  <div style="border-left: 4px solid #007ACC; padding: 1em; background-color: #f0f8ff; margin: 1em 0; color: #000;">
+    <p style="margin: 0;"><strong>Foundation Models for Decision Making Workshop, NeurIPS 2023</strong></p>
+  </div>
   <div style="display: flex; align-items: center;">
     <!-- Figure Section -->
     <div style="flex-shrink: 0; margin-right: 15px;">
