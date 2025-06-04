@@ -13,9 +13,9 @@ Hi, I'm Min Cai (蔡旻). I'm an incoming PhD student at the University of Alber
 I have broad interests in ML and NLP, particularly in understanding the mechanisms behind neural language models (LMs), developing LLM agents capable of solving complex problems, and enhancing LLM reasoning abilities. **Currently, my primary focus is on inference-time algorithms for alignment and reasoning in LLMs.**
 
 Specifically, my current research focuses on:
-- **Interpreting and controlling LLM behaviors** for better alignment with human values (e.g., <a href="https://llm-self-control.github.io" style="text-decoration: none; color: #0366d6; transition: color 0.3s;">SelfControl</a>)
+- **<a href="https://arxiv.org/abs/2504.02904" style="text-decoration: none; color: #0366d6; transition: color 0.3s;">Interpreting</a>** and **controlling LLM behaviors** for better alignment with human values (e.g., <a href="https://llm-self-control.github.io" style="text-decoration: none; color: #0366d6; transition: color 0.3s;">SelfControl</a>)
 - **LLM Agents** capable of solving complex tasks, such as multi-agent social deduction games(e.g., <a href="https://avalonbench.github.io" style="text-decoration: none; color: #0366d6; transition: color 0.3s;">AvalonBench</a>)
-- **Improving LLM reasoning abilities**, particularly by introducing advanced inference-time algorithms like Monte Carlo tree search (e.g., <a href="https://llm-strategist.github.io" style="text-decoration: none; color: #0366d6; transition: color 0.3s;">Strategist</a>), controlled text generation and representation engineering.
+- **Improving LLM reasoning capabilities**, particularly by introducing advanced inference-time algorithms like Monte Carlo tree search (e.g., <a href="https://llm-strategist.github.io" style="text-decoration: none; color: #0366d6; transition: color 0.3s;">Strategist</a>), controlled text generation and representation engineering.
 
 
 # Selected Publications
