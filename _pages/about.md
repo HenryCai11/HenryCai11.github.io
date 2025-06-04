@@ -32,9 +32,9 @@ Specifically, my current research focuses on:
       </button>
     </a>
   </p>
-  <p>
-    Outstanding Paper Award at the New England NLP Workshop
-  </p>
+  <div style="border-left: 4px solid #007ACC; padding: 1em; background-color: #f0f8ff; margin: 1em 0; color: #000;">
+    <p style="margin: 0;">Outstanding Paper Award at the New England NLP Workshop</p>
+  </div>
   <div style="display: flex; align-items: center;">
     <!-- Figure Section -->
     <div style="flex-shrink: 0; margin-right: 15px;">
@@ -73,8 +73,10 @@ Specifically, my current research focuses on:
       </button>
     </a>
   </p>
-  <p>International Conference on Learning Representations (ICLR 2025)<br>
-  Covered by State of AI Report 2024 , published by Air Street Capital.</p>
+  <div style="border-left: 4px solid #007ACC; padding: 1em; background-color: #f0f8ff; margin: 1em 0; color: #000;">
+    <p style="margin: 0;"><strong>International Conference on Learning Representations (ICLR 2025)</strong><br>
+    Covered by <em>State of AI Report 2024</em>, published by Air Street Capital.</p>
+  </div>
   <div style="display: flex; align-items: center;">
     <!-- Figure Section -->
     <div style="flex-shrink: 0; margin-right: 15px;">
