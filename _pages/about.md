@@ -51,7 +51,7 @@ Specifically, my current research focuses on:
 ---
 
 <div>
-  <h2>Strategist: Learning Strategic Skills by LLMs via Bi-Level Tree Search</h3>
+  <h2>Strategist: Learning Strategic Skills by LLMs via Bi-Level Tree Search</h2>
   <p>
     Jonathan Light, <b>Min Cai</b>, Weiqin Chen, Guanzhi Wang, Xiusi Chen, Wei Cheng, Yisong Yue, Ziniu Hu
     <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/jonathanmli/Avalon-LLM?logo=github&style=flat-square">
@@ -93,7 +93,7 @@ Specifically, my current research focuses on:
 ---
 
 <div>
-  <h2>Self-Control of LLM Behaviors by Compressing Suffix Gradient into Prefix Controller</h3>
+  <h2>Self-Control of LLM Behaviors by Compressing Suffix Gradient into Prefix Controller</h2>
   <p>
     <b>Min Cai</b>, Yuchen Zhang, Shichang Zhang, Fan Yin, Dan Zhang, Difan Zou, Yisong Yue, Ziniu Hu
     <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/HenryCai11/LLM-Self-Control?logo=github&style=flat-square">
@@ -136,7 +136,7 @@ Specifically, my current research focuses on:
 
 <!-- Text and Buttons Section -->
 <div>
-  <h2>AvalonBench: Evaluating LLMs Playing the Game of Avalon</h3>
+  <h2>AvalonBench: Evaluating LLMs Playing the Game of Avalon</h2>
   <p>
     Jonathan Light*, <b>Min Cai*</b>, Sheng Shen, Ziniu Hu (*equal contribution)
     <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/jonathanmli/Avalon-LLM?logo=github&style=flat-square">
