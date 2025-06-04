@@ -21,7 +21,7 @@ Specifically, my current research focuses on:
 # Selected Publications
 
 <div>
-  <h3>How Post-Training Reshapes LLMs: A Mechanistic View on Knowledge, Truthfulness, Refusal, and Confidence</h3>
+  <h2>How Post-Training Reshapes LLMs: A Mechanistic View on Knowledge, Truthfulness, Refusal, and Confidence</h3>
   <p>
     Hongzhe Du*, Weikai Li*, <b>Min Cai</b>, Karim Saraipour, Zimin Zhang, Himabindu Lakkaraju, Yizhou Sun, Shichang Zhang (*equal contribution)
   </p>
@@ -51,7 +51,7 @@ Specifically, my current research focuses on:
 ---
 
 <div>
-  <h3>Strategist: Learning Strategic Skills by LLMs via Bi-Level Tree Search</h3>
+  <h2>Strategist: Learning Strategic Skills by LLMs via Bi-Level Tree Search</h3>
   <p>
     Jonathan Light, <b>Min Cai</b>, Weiqin Chen, Guanzhi Wang, Xiusi Chen, Wei Cheng, Yisong Yue, Ziniu Hu
     <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/jonathanmli/Avalon-LLM?logo=github&style=flat-square">
@@ -93,7 +93,7 @@ Specifically, my current research focuses on:
 ---
 
 <div>
-  <h3>Self-Control of LLM Behaviors by Compressing Suffix Gradient into Prefix Controller</h3>
+  <h2>Self-Control of LLM Behaviors by Compressing Suffix Gradient into Prefix Controller</h3>
   <p>
     <b>Min Cai</b>, Yuchen Zhang, Shichang Zhang, Fan Yin, Dan Zhang, Difan Zou, Yisong Yue, Ziniu Hu
     <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/HenryCai11/LLM-Self-Control?logo=github&style=flat-square">
@@ -136,7 +136,7 @@ Specifically, my current research focuses on:
 
 <!-- Text and Buttons Section -->
 <div>
-  <h3>AvalonBench: Evaluating LLMs Playing the Game of Avalon</h3>
+  <h2>AvalonBench: Evaluating LLMs Playing the Game of Avalon</h3>
   <p>
     Jonathan Light*, <b>Min Cai*</b>, Sheng Shen, Ziniu Hu (*equal contribution)
     <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/jonathanmli/Avalon-LLM?logo=github&style=flat-square">
@@ -176,3 +176,6 @@ Specifically, my current research focuses on:
 
 <!-- Figure Section -->
 <!-- Text and Buttons Section -->
+# Beyond Academics
+
+In my spare time, I enjoy playing and listening to music (jazz, classical, R&B, etc.). I also like playing games such as the Pokémon Trading Card Game (PTCG), and I love trying all kinds of food.
