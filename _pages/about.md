@@ -20,6 +20,115 @@ Specifically, my current research focuses on:
 
 # Selected Publications
 
+<div>
+  <h3>How Post-Training Reshapes LLMs: A Mechanistic View on Knowledge, Truthfulness, Refusal, and Confidence</h3>
+  <p>
+    Hongzhe Du*, Weikai Li*, <b>Min Cai</b>, Karim Saraipour, Zimin Zhang, Himabindu Lakkaraju, Yizhou Sun, Shichang Zhang (*equal contribution)
+  </p>
+  <p>
+    <a href="https://arxiv.org/abs/2504.02904" target="_blank" style="text-decoration:none;">
+      <button style="padding:6px 6px; background-color:#0366d6; color:white; border:none; border-radius:3px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
+        Preprint
+      </button>
+    </a>
+  </p>
+  <p>
+    Outstanding Paper Award at the New England NLP Workshop
+  </p>
+  <div style="display: flex; align-items: center;">
+    <!-- Figure Section -->
+    <div style="flex-shrink: 0; margin-right: 15px;">
+      <img src="../images/how_post_train_reshapes.png" alt="Strategist Figure" style="max-width: 200px; border-radius: 8px;">
+    </div>
+    <div>
+      <p>
+        <i>In this paper we studied how post-training reshapes LLMs on knowledge storation, truthfulness, refusal and confidence, using toolkits like causal tracing, linear probing and entropy neurons.</i>
+      </p>
+    </div>
+  </div>
+</div>
+
+---
+
+<div>
+  <h3>Strategist: Learning Strategic Skills by LLMs via Bi-Level Tree Search</h3>
+  <p>
+    Jonathan Light, <b>Min Cai</b>, Weiqin Chen, Guanzhi Wang, Xiusi Chen, Wei Cheng, Yisong Yue, Ziniu Hu
+    <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/jonathanmli/Avalon-LLM?logo=github&style=flat-square">
+  </p>
+  <p>
+    <a href="https://github.com/jonathanmli/Avalon-LLM/" target="_blank" style="text-decoration:none;">
+      <button style="padding:6px 6px; background-color:#0366d6; color:white; border:none; border-radius:3px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
+        Code
+      </button>
+    </a>
+    <a href="https://arxiv.org/abs/2408.10635" target="_blank" style="text-decoration:none;">
+      <button style="padding:6px 6px; background-color:#0366d6; color:white; border:none; border-radius:3px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
+        Preprint
+      </button>
+    </a>
+    <a href="https://llm-strategist.github.io" target="_blank" style="text-decoration:none;">
+      <button style="padding:6px 6px; background-color:#0366d6; color:white; border:none; border-radius:3px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
+        Website
+      </button>
+    </a>
+  </p>
+  <p>International Conference on Learning Representations (ICLR 2025)<br>
+  Covered by State of AI Report 2024 , published by Air Street Capital.</p>
+  <div style="display: flex; align-items: center;">
+    <!-- Figure Section -->
+    <div style="flex-shrink: 0; margin-right: 15px;">
+      <img src="../images/strategist-fig.png" alt="Strategist Figure" style="max-width: 200px; border-radius: 8px;">
+    </div>
+    <div>
+      <p>
+        <i>Strategist is an advanced game agent that utilizes LLMs to acquire new skills for playing multi-agent games through a self-improvement process.</i>
+      </p>
+    </div>
+  </div>
+</div>
+
+---
+
+<div>
+  <h3>Self-Control of LLM Behaviors by Compressing Suffix Gradient into Prefix Controller</h3>
+  <p>
+    <b>Min Cai</b>, Yuchen Zhang, Shichang Zhang, Fan Yin, Dan Zhang, Difan Zou, Yisong Yue, Ziniu Hu
+    <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/HenryCai11/LLM-Self-Control?logo=github&style=flat-square">
+  </p>
+  <p>
+    <a href="https://github.com/HenryCai11/LLM-Self-Control" target="_blank" style="text-decoration:none;">
+      <button style="padding:6px 6px; background-color:#0366d6; color:white; border:none; border-radius:3px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
+        Code
+      </button>
+    </a>
+    <a href="https://arxiv.org/abs/2406.02721" target="_blank" style="text-decoration:none;">
+      <button style="padding:6px 6px; background-color:#0366d6; color:white; border:none; border-radius:3px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
+        Preprint
+      </button>
+    </a>
+    <a href="https://llm-self-control.github.io" target="_blank" style="text-decoration:none;">
+      <button style="padding:6px 6px; background-color:#0366d6; color:white; border:none; border-radius:3px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
+        Website
+      </button>
+    </a>
+  </p>
+  <div style="display: flex; align-items: center;">
+    <!-- Image Section -->
+    <div style="flex-shrink: 0; margin-right: 15px;">
+      <img src="../images/selfcontrol-fig.png" alt="SelfControl Figure" style="max-width: 200px; border-radius: 8px;">
+    </div>
+    <!-- Text Section -->
+    <div>
+      <p>
+        <i>SelfControl is an inference time LLM control method that leverages LLM self-evaluation to control model behaviors through representation engineering.</i>
+      </p>
+    </div>
+  </div>
+</div>
+
+---
+
 <!-- Text and Buttons Section -->
 <div>
   <h3>AvalonBench: Evaluating LLMs Playing the Game of Avalon</h3>
@@ -47,7 +156,7 @@ Specifically, my current research focuses on:
   <div style="display: flex; align-items: center;">
     <!-- Figure Section -->
     <div style="flex-shrink: 0; margin-right: 15px;">
-      <img src="../images/avalonbench-fig.png" alt="AvalonBench Figure" style="max-width: 350px; border-radius: 8px;">
+      <img src="../images/avalonbench-fig.png" alt="AvalonBench Figure" style="max-width: 200px; border-radius: 8px;">
     </div>
     <div>
       <p>
@@ -57,80 +166,5 @@ Specifically, my current research focuses on:
   </div>
 </div>
 
-----
-
 <!-- Figure Section -->
-<div>
-  <h3>Self-Control of LLM Behaviors by Compressing Suffix Gradient into Prefix Controller</h3>
-  <p>
-    <b>Min Cai</b>, Yuchen Zhang, Shichang Zhang, Fan Yin, Dan Zhang, Difan Zou, Yisong Yue, Ziniu Hu
-    <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/HenryCai11/LLM-Self-Control?logo=github&style=flat-square">
-  </p>
-  <p>
-    <a href="https://github.com/HenryCai11/LLM-Self-Control" target="_blank" style="text-decoration:none;">
-      <button style="padding:6px 6px; background-color:#0366d6; color:white; border:none; border-radius:3px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
-        Code
-      </button>
-    </a>
-    <a href="https://arxiv.org/abs/2406.02721" target="_blank" style="text-decoration:none;">
-      <button style="padding:6px 6px; background-color:#0366d6; color:white; border:none; border-radius:3px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
-        Preprint
-      </button>
-    </a>
-    <a href="https://llm-self-control.github.io" target="_blank" style="text-decoration:none;">
-      <button style="padding:6px 6px; background-color:#0366d6; color:white; border:none; border-radius:3px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
-        Website
-      </button>
-    </a>
-  </p>
-  <div style="display: flex; align-items: center;">
-    <!-- Image Section -->
-    <div style="flex-shrink: 0; margin-right: 15px;">
-      <img src="../images/selfcontrol-fig.png" alt="SelfControl Figure" style="max-width: 350px; border-radius: 8px;">
-    </div>
-    <!-- Text Section -->
-    <div>
-      <p>
-        <i>SelfControl is an inference time LLM control method that leverages LLM self-evaluation to control model behaviors through representation engineering.</i>
-      </p>
-    </div>
-  </div>
-</div>
-
-----
 <!-- Text and Buttons Section -->
-<div>
-  <h3>Strategist: Learning Strategic Skills by LLMs via Bi-Level Tree Search (ICLR 2025)</h3>
-  <p>
-    Jonathan Light, <b>Min Cai</b>, Weiqin Chen, Guanzhi Wang, Xiusi Chen, Wei Cheng, Yisong Yue, Ziniu Hu
-    <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/jonathanmli/Avalon-LLM?logo=github&style=flat-square">
-  </p>
-  <p>
-    <a href="https://github.com/jonathanmli/Avalon-LLM/" target="_blank" style="text-decoration:none;">
-      <button style="padding:6px 6px; background-color:#0366d6; color:white; border:none; border-radius:3px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
-        Code
-      </button>
-    </a>
-    <a href="https://arxiv.org/abs/2408.10635" target="_blank" style="text-decoration:none;">
-      <button style="padding:6px 6px; background-color:#0366d6; color:white; border:none; border-radius:3px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
-        Preprint
-      </button>
-    </a>
-    <a href="https://llm-strategist.github.io" target="_blank" style="text-decoration:none;">
-      <button style="padding:6px 6px; background-color:#0366d6; color:white; border:none; border-radius:3px; font-size:13px; font-weight:bold; cursor:pointer; transition: background-color 0.3s;">
-        Website
-      </button>
-    </a>
-  </p>
-  <div style="display: flex; align-items: center;">
-    <!-- Figure Section -->
-    <div style="flex-shrink: 0; margin-right: 15px;">
-      <img src="../images/strategist-fig.png" alt="Strategist Figure" style="max-width: 200px; border-radius: 8px;">
-    </div>
-    <div>
-      <p>
-        <i>Strategist is an advanced game agent that utilizes LLMs to acquire new skills for playing multi-agent games through a self-improvement process.</i>
-      </p>
-    </div>
-  </div>
-</div>
