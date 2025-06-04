@@ -47,9 +47,6 @@ Specifically, my current research focuses on:
     </div>
   </div>
 </div>
-
----
-
 <div>
   <h2>Strategist: Learning Strategic Skills by LLMs via Bi-Level Tree Search</h2>
   <p>
@@ -89,9 +86,6 @@ Specifically, my current research focuses on:
     </div>
   </div>
 </div>
-
----
-
 <div>
   <h2>Self-Control of LLM Behaviors by Compressing Suffix Gradient into Prefix Controller</h2>
   <p>
@@ -131,9 +125,6 @@ Specifically, my current research focuses on:
     </div>
   </div>
 </div>
-
----
-
 <!-- Text and Buttons Section -->
 <div>
   <h2>AvalonBench: Evaluating LLMs Playing the Game of Avalon</h2>
@@ -176,6 +167,8 @@ Specifically, my current research focuses on:
 
 <!-- Figure Section -->
 <!-- Text and Buttons Section -->
+---
+
 # Beyond Academics
 
 In my spare time, I enjoy playing and listening to music (jazz, classical, R&B, etc.). I also like playing games such as the Pokémon Trading Card Game (PTCG), and I love trying all kinds of food.
