@@ -82,7 +82,7 @@ analytics:
 author:
   name             : "Min Cai"
   avatar           : "profile.png"
-  bio              : "The avatar is one of my favourite pokémons, Snorlax."
+  bio              : 'The avatar is one of my favourite pokémons, Snorlax. You can also check out <a href="https://wicg.github.io/html-in-canvas/" target="_blank" rel="noopener">html-in-canvas</a> <span style="color: #555;">(use Chrome to view this)</span>.'
   location         : "Beijing, China"
   employer         :
   pubmed           : "https://scholar.google.com/citations?user=QMTSC0oAAAAJ&hl=en"
