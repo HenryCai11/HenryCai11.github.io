@@ -47,9 +47,9 @@ I have broad interests in ML and NLP, particularly in understanding the mechanis
 
 <div class="ptree">
   <div class="ptree-root">Agent</div>
-  <div class="ptree-body">
+  <div class="ptree-branches">
 
-    <div class="ptree-category">
+    <div class="ptree-branch">
       <div class="ptree-cat-label">Evaluation</div>
       <div class="ptree-leaves">
         <div class="ptree-leaf">
@@ -59,7 +59,7 @@ I have broad interests in ML and NLP, particularly in understanding the mechanis
       </div>
     </div>
 
-    <div class="ptree-category">
+    <div class="ptree-branch">
       <div class="ptree-cat-label">Strategic Reasoning</div>
       <div class="ptree-leaves">
         <div class="ptree-leaf">
@@ -74,9 +74,9 @@ I have broad interests in ML and NLP, particularly in understanding the mechanis
 
 <div class="ptree">
   <div class="ptree-root">Mechanistic Interpretability</div>
-  <div class="ptree-body">
+  <div class="ptree-branches">
 
-    <div class="ptree-category">
+    <div class="ptree-branch">
       <div class="ptree-cat-label">Post-Training Analysis</div>
       <div class="ptree-leaves">
         <div class="ptree-leaf">
@@ -87,7 +87,7 @@ I have broad interests in ML and NLP, particularly in understanding the mechanis
       </div>
     </div>
 
-    <div class="ptree-category">
+    <div class="ptree-branch">
       <div class="ptree-cat-label">Behavior Control</div>
       <div class="ptree-leaves">
         <div class="ptree-leaf">
