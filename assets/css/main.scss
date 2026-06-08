@@ -976,107 +976,58 @@ html.theme-night {
 }
 
 /* ================================================================
-   Paper Trees  —  vine / 藤蔓 style
+   Paper Trees  —  vine / 藤蔓 style  (SVG curves drawn by JS)
    ================================================================ */
-
-@keyframes vine-fade {
-  from { opacity: 0; transform: translateY(6px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
 
 .paper-forest {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
   margin-top: 1.75rem;
+  align-items: start;
 }
 
 @media (max-width: 700px) {
   .paper-forest { grid-template-columns: 1fr; }
 }
 
-/* Root node — bold accent pill */
+/* Tree container — SVG overlay is absolute inside */
+.ptree {
+  position: relative;
+}
+
+/* Root pill */
 .ptree-root {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
   background: var(--accent);
   color: #fff;
   font-size: 0.9rem;
   font-weight: 700;
-  letter-spacing: 0.015em;
-  padding: 0.38em 1.2em;
+  letter-spacing: 0.02em;
+  padding: 0.4em 1.2em;
   border-radius: var(--pill);
   box-shadow: var(--shadow-md);
   position: relative;
   z-index: 1;
 }
 
-/* Short trunk below root */
-.ptree-root::after {
-  content: '';
-  position: absolute;
-  left: 1.5rem;
-  top: 100%;
-  width: 2px;
-  height: 0.75rem;
-  background: var(--accent);
-}
-
-/* Branches container */
+/* Spacing below root before branches */
 .ptree-branches {
-  margin-left: 1.5rem;
-  margin-top: 0.75rem;
+  margin-top: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
 }
 
-/* Each branch (category row) */
+/* Branch row — indent for vine clearance */
 .ptree-branch {
-  position: relative;
-  padding-left: 1.75rem;
-  padding-bottom: 1.1rem;
-  animation: vine-fade 0.4s ease both;
+  padding-left: 2.25rem;
 }
 
-.ptree-branch:nth-child(1) { animation-delay: 0.05s; }
-.ptree-branch:nth-child(2) { animation-delay: 0.15s; }
-.ptree-branch:nth-child(3) { animation-delay: 0.25s; }
-
-/* Vertical line running down the left side of each branch.
-   Non-last branches extend to full height; last stops at the curve. */
-.ptree-branch::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 2px;
-  background: var(--accent);
-  /* Full height for non-last branches, stops at curve bottom for last */
-  bottom: 0;
-}
-
-.ptree-branch:last-child::before {
-  bottom: auto;
-  height: 0.85rem; /* just enough for the curve */
-}
-
-/* Curved ╰─ connector (quarter-circle) */
-.ptree-branch::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 1.25rem;
-  height: 0.85rem;
-  border-left: 2px solid var(--accent);
-  border-bottom: 2px solid var(--accent);
-  border-bottom-left-radius: 0.55rem;
-  background: transparent;
-}
-
-/* Junction dot at the curve endpoint */
+/* Category badge */
 .ptree-cat-label {
-  position: relative;
-  font-size: 0.71rem;
+  font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.09em;
@@ -1086,12 +1037,13 @@ html.theme-night {
   border-radius: var(--radius-sm);
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.18em 0.6em;
+  gap: 0.35rem;
+  padding: 0.2em 0.65em;
   margin-bottom: 0.55rem;
+  position: relative;
+  z-index: 1;
 }
 
-/* Small filled circle before the category name */
 .ptree-cat-label::before {
   content: '';
   display: inline-block;
@@ -1102,56 +1054,29 @@ html.theme-night {
   flex-shrink: 0;
 }
 
-/* Leaves container under a category */
+/* Leaves cluster under a category */
 .ptree-leaves {
-  margin-left: 0.6rem;
-  margin-top: 0.15rem;
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
 }
 
-/* Each paper leaf */
+/* Paper leaf card */
 .ptree-leaf {
-  position: relative;
-  padding: 0.55rem 0.75rem;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  margin-bottom: 0.5rem;
-  transition: border-color 0.15s, box-shadow 0.15s;
-  animation: vine-fade 0.45s ease both;
+  padding: 0.6rem 0.8rem;
+  transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s;
+  position: relative;
+  z-index: 1;
 }
-
-.ptree-branch:nth-child(1) .ptree-leaf { animation-delay: 0.12s; }
-.ptree-branch:nth-child(2) .ptree-leaf { animation-delay: 0.22s; }
-
-.ptree-leaf:last-child { margin-bottom: 0; }
 
 .ptree-leaf:hover {
   border-color: var(--accent);
   box-shadow: var(--shadow-sm);
-}
-
-/* Curved twig: ╰─ from category to leaf */
-.ptree-leaf::before {
-  content: '';
-  position: absolute;
-  left: -0.6rem;
-  top: 0;
-  width: 0.45rem;
-  height: 0.75rem;
-  border-left: 1.5px solid var(--border);
-  border-bottom: 1.5px solid var(--border);
-  border-bottom-left-radius: 0.3rem;
-}
-
-/* Extend vertical twig for non-last leaves */
-.ptree-leaf:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  left: -0.6rem;
-  top: 0.75rem;
-  bottom: -0.5rem;
-  width: 1.5px;
-  background: var(--border);
+  transform: translateX(2px);
 }
 
 .ptree-leaf-venue {
@@ -1181,5 +1106,16 @@ html.theme-night {
   display: block;
   font-size: 0.68rem;
   color: var(--text-muted);
-  margin-top: 0.2rem;
+  margin-top: 0.22rem;
+}
+
+/* SVG vine overlay — drawn by JS */
+.ptree-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 0;
 }
