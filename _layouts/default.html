@@ -15,13 +15,53 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
   <link rel="icon" href="/images/favicon.ico">
   {% feed_meta %}
-  <!-- Apply initial theme before render to avoid flash -->
+  <!-- Continuous day→night interpolation (runs before render — no flash) -->
   <script>
-    (function () {
-      var themes = ['theme-dawn','theme-morning','theme-afternoon','theme-sunset','theme-twilight','theme-night'];
-      var idx = Math.floor(Date.now() / 60000) % themes.length;
-      document.documentElement.classList.add(themes[idx]);
-    })();
+  window.MC = (function () {
+    /* Control points: minutes-since-midnight → full palette */
+    var CP = [
+      { t: 240,  v: { '--bg':'#FDF5EC','--bg-top':'#FFF8F2','--surface':'#FFFCF8','--text':'#2A1C0C','--text-muted':'#7A5A30','--text-subtle':'#C0A070','--accent':'#CF7820','--accent-dark':'#A85E10','--accent-bg':'#FEF3DC','--border':'#EAD8BC','--border-light':'#F2E6CC','--pre-bg':'#2A1C0C','--pre-color':'#F2E6CC' }},
+      { t: 420,  v: { '--bg':'#F8F5F0','--bg-top':'#FFFFFF','--surface':'#FFFFFF','--text':'#1A1614','--text-muted':'#6B6058','--text-subtle':'#A8A098','--accent':'#C84B24','--accent-dark':'#A33B1A','--accent-bg':'#FEF0EA','--border':'#E3DDD6','--border-light':'#EDE9E3','--pre-bg':'#1A1614','--pre-color':'#F5F0EB' }},
+      { t: 660,  v: { '--bg':'#FBF6E8','--bg-top':'#FFFDF5','--surface':'#FFFDF5','--text':'#1E1800','--text-muted':'#5C4E10','--text-subtle':'#A89040','--accent':'#C89000','--accent-dark':'#A07200','--accent-bg':'#FEF4CC','--border':'#E8D890','--border-light':'#F2E8B0','--pre-bg':'#1E1800','--pre-color':'#F2E8B0' }},
+      { t: 960,  v: { '--bg':'#F8EEE6','--bg-top':'#FFF0E4','--surface':'#FFF8F4','--text':'#280A00','--text-muted':'#7A3018','--text-subtle':'#C08060','--accent':'#C83018','--accent-dark':'#A02010','--accent-bg':'#FEEAE0','--border':'#EAC4B0','--border-light':'#F2D8C8','--pre-bg':'#280A00','--pre-color':'#F2D8C8' }},
+      { t: 1140, v: { '--bg':'#EEEAF8','--bg-top':'#E8E2F8','--surface':'#F8F6FF','--text':'#140A30','--text-muted':'#4A3880','--text-subtle':'#9080C0','--accent':'#5840D0','--accent-dark':'#3E2CA8','--accent-bg':'#EAE4FC','--border':'#C8BAE8','--border-light':'#D8CEF2','--pre-bg':'#140A30','--pre-color':'#D8CEF2' }},
+      { t: 1260, v: { '--bg':'#121016','--bg-top':'#1A1628','--surface':'#1C1A22','--text':'#EDE8F4','--text-muted':'#C0B8D4','--text-subtle':'#6A6080','--accent':'#A888F0','--accent-dark':'#8860D8','--accent-bg':'#241C38','--border':'#2C2838','--border-light':'#241E30','--pre-bg':'#0C0A10','--pre-color':'#C0B8D4' }},
+      /* wrap: same as Dawn, placed at 4am next cycle */
+      { t: 1680, v: { '--bg':'#FDF5EC','--bg-top':'#FFF8F2','--surface':'#FFFCF8','--text':'#2A1C0C','--text-muted':'#7A5A30','--text-subtle':'#C0A070','--accent':'#CF7820','--accent-dark':'#A85E10','--accent-bg':'#FEF3DC','--border':'#EAD8BC','--border-light':'#F2E6CC','--pre-bg':'#2A1C0C','--pre-color':'#F2E6CC' }},
+    ];
+
+    function rgb(h) {
+      return [parseInt(h.slice(1,3),16), parseInt(h.slice(3,5),16), parseInt(h.slice(5,7),16)];
+    }
+    function lerp(a, b, t) {
+      var ra=rgb(a), rb=rgb(b);
+      return '#'+ra.map(function(v,i){
+        return ('0'+Math.round(v+(rb[i]-v)*t).toString(16)).slice(-2);
+      }).join('');
+    }
+
+    function apply(root) {
+      var now = new Date();
+      var m = now.getHours()*60 + now.getMinutes();
+      if (m < 240) m += 1440; /* before 4 am → treat as tail of previous cycle */
+
+      var i = 0;
+      while (i < CP.length-2 && CP[i+1].t <= m) i++;
+      var c1=CP[i], c2=CP[i+1];
+      var f = Math.max(0, Math.min(1, (m-c1.t)/(c2.t-c1.t)));
+
+      var keys = Object.keys(c1.v);
+      for (var k=0; k<keys.length; k++) {
+        root.style.setProperty(keys[k], lerp(c1.v[keys[k]], c2.v[keys[k]], f));
+      }
+      var bgRgb = rgb(lerp(c1.v['--bg'], c2.v['--bg'], f));
+      root.style.setProperty('--bg-rgb', bgRgb.join(','));
+    }
+
+    return { apply: apply };
+  })();
+
+  window.MC.apply(document.documentElement);
   </script>
 </head>
 <body>
@@ -84,64 +124,32 @@
     });
   })();
 
-  /* ---- Day → Night theme cycle ---- */
+  /* ---- Poll every 30 s to keep interpolated colors in sync ---- */
   (function () {
-    var themes = [
-      { cls: 'theme-dawn',      label: 'Dawn'      },
-      { cls: 'theme-morning',   label: 'Morning'   },
-      { cls: 'theme-afternoon', label: 'Afternoon' },
-      { cls: 'theme-sunset',    label: 'Sunset'    },
-      { cls: 'theme-twilight',  label: 'Twilight'  },
-      { cls: 'theme-night',     label: 'Night'     }
-    ];
-
+    var labels = ['Dawn','Morning','Afternoon','Sunset','Twilight','Night'];
     var indicator = document.getElementById('themeIndicator');
     var nameEl    = document.getElementById('themeName');
-    var hideTimer = null;
+    var hideTimer, lastBracket = -1;
 
-    function getIndex() {
-      return Math.floor(Date.now() / 60000) % themes.length;
+    function bracket() {
+      var h = new Date().getHours();
+      return h>=4&&h<7?0:h>=7&&h<11?1:h>=11&&h<16?2:h>=16&&h<19?3:h>=19&&h<21?4:5;
     }
 
-    var currentIdx = getIndex();
-
-    function applyTheme(idx, showIndicator) {
-      var html = document.documentElement;
-
-      html.classList.add('theme-transitioning');
-      themes.forEach(function (t) { html.classList.remove(t.cls); });
-      html.classList.add(themes[idx].cls);
-      setTimeout(function () { html.classList.remove('theme-transitioning'); }, 2700);
-
-      if (showIndicator) {
-        nameEl.textContent = themes[idx].label;
+    function tick() {
+      window.MC.apply(document.documentElement);
+      var b = bracket();
+      if (lastBracket !== -1 && b !== lastBracket) {
+        nameEl.textContent = labels[b];
         clearTimeout(hideTimer);
         indicator.classList.add('visible');
-        hideTimer = setTimeout(function () {
-          indicator.classList.remove('visible');
-        }, 3500);
+        hideTimer = setTimeout(function(){ indicator.classList.remove('visible'); }, 3500);
       }
+      lastBracket = b;
     }
 
-    /* Poll every 5 s — works even when browser throttles background tabs */
-    setInterval(function () {
-      var idx = getIndex();
-      if (idx !== currentIdx) {
-        currentIdx = idx;
-        applyTheme(idx, true);
-      }
-    }, 5000);
-
-    /* Re-sync immediately when the user returns to the tab */
-    document.addEventListener('visibilitychange', function () {
-      if (!document.hidden) {
-        var idx = getIndex();
-        if (idx !== currentIdx) {
-          currentIdx = idx;
-          applyTheme(idx, true);
-        }
-      }
-    });
+    setInterval(tick, 30000);
+    document.addEventListener('visibilitychange', function(){ if (!document.hidden) tick(); });
   })();
 </script>
 

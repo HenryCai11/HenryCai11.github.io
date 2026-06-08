@@ -19,6 +19,7 @@
   --border-light: #EDE9E3;
 
   --bg-rgb:    248, 245, 240;
+  --bg-top:    #FFFFFF;
   --pre-bg:    #1A1614;
   --pre-color: #F5F0EB;
 
@@ -51,7 +52,8 @@ body {
   font-size: 1rem;
   line-height: 1.65;
   color: var(--text);
-  background: var(--bg);
+  background: linear-gradient(160deg, var(--bg-top) 0%, var(--bg) 100%);
+  min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -834,6 +836,7 @@ html.theme-transitioning *::after {
 /* ---- 1. Dawn ---- */
 html.theme-dawn {
   --bg:          #FDF5EC;
+  --bg-top:      #FFF8F2;
   --bg-rgb:      253, 245, 236;
   --surface:     #FFFCF8;
   --text:        #2A1C0C;
@@ -851,6 +854,7 @@ html.theme-dawn {
 /* ---- 2. Morning (default — already in :root) ---- */
 html.theme-morning {
   --bg:          #F8F5F0;
+  --bg-top:      #FFFFFF;
   --bg-rgb:      248, 245, 240;
   --surface:     #FFFFFF;
   --text:        #1A1614;
@@ -868,6 +872,7 @@ html.theme-morning {
 /* ---- 3. Afternoon ---- */
 html.theme-afternoon {
   --bg:          #FBF6E8;
+  --bg-top:      #FFFDF5;
   --bg-rgb:      251, 246, 232;
   --surface:     #FFFDF5;
   --text:        #1E1800;
@@ -885,6 +890,7 @@ html.theme-afternoon {
 /* ---- 4. Sunset ---- */
 html.theme-sunset {
   --bg:          #F8EEE6;
+  --bg-top:      #FFF0E4;
   --bg-rgb:      248, 238, 230;
   --surface:     #FFF8F4;
   --text:        #280A00;
@@ -902,6 +908,7 @@ html.theme-sunset {
 /* ---- 5. Twilight ---- */
 html.theme-twilight {
   --bg:          #EEEAF8;
+  --bg-top:      #E8E2F8;
   --bg-rgb:      238, 234, 248;
   --surface:     #F8F6FF;
   --text:        #140A30;
@@ -919,6 +926,7 @@ html.theme-twilight {
 /* ---- 6. Night ---- */
 html.theme-night {
   --bg:          #121016;
+  --bg-top:      #1A1628;
   --bg-rgb:      18, 16, 22;
   --surface:     #1C1A22;
   --text:        #EDE8F4;
