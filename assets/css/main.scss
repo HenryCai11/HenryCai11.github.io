@@ -938,3 +938,156 @@ html.theme-night {
   --shadow-md: 0 4px 12px rgba(0,0,0,.5), 0 2px 4px rgba(0,0,0,.4);
   --shadow-lg: 0 8px 24px rgba(0,0,0,.6), 0 4px 8px rgba(0,0,0,.45);
 }
+
+/* ================================================================
+   News Section
+   ================================================================ */
+
+.news-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 1.25rem;
+}
+
+.news-item {
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+  line-height: 1.5;
+}
+
+.news-date {
+  flex-shrink: 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  background: var(--accent-bg);
+  padding: 0.2em 0.65em;
+  border-radius: var(--pill);
+  white-space: nowrap;
+}
+
+.news-text {
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+/* ================================================================
+   Paper Trees
+   ================================================================ */
+
+.paper-forest {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin-top: 1.5rem;
+}
+
+@media (max-width: 680px) {
+  .paper-forest { grid-template-columns: 1fr; }
+}
+
+.ptree-root {
+  display: inline-flex;
+  align-items: center;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 0.35em 1.1em;
+  border-radius: var(--pill);
+  margin-bottom: 1.1rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.ptree-body {
+  border-left: 2px solid var(--accent);
+  padding-left: 1.25rem;
+  margin-left: 0.4rem;
+}
+
+.ptree-category {
+  position: relative;
+  margin-bottom: 1.2rem;
+}
+
+.ptree-category:last-child { margin-bottom: 0; }
+
+.ptree-category::before {
+  content: '';
+  position: absolute;
+  left: -1.25rem;
+  top: 0.63rem;
+  width: 0.75rem;
+  height: 2px;
+  background: var(--accent);
+}
+
+.ptree-cat-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.ptree-leaves {
+  border-left: 2px solid var(--border);
+  padding-left: 1.1rem;
+  margin-left: 0.4rem;
+  margin-top: 0.4rem;
+}
+
+.ptree-leaf {
+  position: relative;
+  padding: 0.45rem 0;
+}
+
+.ptree-leaf + .ptree-leaf {
+  border-top: 1px solid var(--border-light);
+}
+
+.ptree-leaf::before {
+  content: '';
+  position: absolute;
+  left: -1.1rem;
+  top: 0.78rem;
+  width: 0.6rem;
+  height: 2px;
+  background: var(--border);
+}
+
+.ptree-leaf-venue {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border-radius: var(--pill);
+  padding: 0.12em 0.55em;
+  margin-bottom: 0.18rem;
+}
+
+.ptree-leaf-title {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.4;
+  transition: color 0.15s;
+}
+
+.ptree-leaf-title:hover { color: var(--accent); text-decoration: none; }
+
+.ptree-leaf-award {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: 0.2rem;
+}
