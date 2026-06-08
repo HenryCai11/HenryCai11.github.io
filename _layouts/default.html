@@ -32,6 +32,8 @@
       { t: 1140, v: { '--bg':'#DDD4F8','--bg-top':'#D4C8F8','--surface':'#F0ECFF','--text':'#140830','--text-muted':'#4A3080','--text-subtle':'#8068C0','--accent':'#6040E0','--accent-dark':'#4828C0','--accent-bg':'#D8CCFC','--border':'#B4A0E0','--border-light':'#C8B8EC','--pre-bg':'#140830','--pre-color':'#C8B8EC' }},
       /* Night 21:00 — rich dark indigo */
       { t: 1260, v: { '--bg':'#0E0C18','--bg-top':'#181428','--surface':'#1C1828','--text':'#F0ECF8','--text-muted':'#C8C0E0','--text-subtle':'#706088','--accent':'#B898FF','--accent-dark':'#9070F0','--accent-bg':'#281C48','--border':'#302840','--border-light':'#281E38','--pre-bg':'#0A0812','--pre-color':'#C8C0E0' }},
+      /* Midnight 00:00 — stay deep dark, don't brighten yet */
+      { t: 1440, v: { '--bg':'#090712','--bg-top':'#110D1E','--surface':'#141020','--text':'#F0ECF8','--text-muted':'#C8C0E0','--text-subtle':'#706088','--accent':'#A080F0','--accent-dark':'#7858D0','--accent-bg':'#1C1438','--border':'#241A30','--border-light':'#1C1428','--pre-bg':'#060410','--pre-color':'#C8C0E0' }},
       /* wrap: same as Dawn at 4am next cycle */
       { t: 1680, v: { '--bg':'#FDECD0','--bg-top':'#FFF6EC','--surface':'#FFF9F3','--text':'#2C1800','--text-muted':'#7C5018','--text-subtle':'#B88840','--accent':'#D88020','--accent-dark':'#B06010','--accent-bg':'#FDE4A8','--border':'#E8C880','--border-light':'#F2DAAA','--pre-bg':'#2C1800','--pre-color':'#F2DAAA' }},
     ];
@@ -132,14 +134,14 @@
 
   /* ---- Poll every 30 s to keep interpolated colors in sync ---- */
   (function () {
-    var labels = ['Dawn','Morning','Afternoon','Sunset','Twilight','Night'];
+    var labels = ['Dawn','Morning','Afternoon','Sunset','Twilight','Night','Midnight'];
     var indicator = document.getElementById('themeIndicator');
     var nameEl    = document.getElementById('themeName');
     var hideTimer, lastBracket = -1;
 
     function bracket() {
       var h = new Date().getHours();
-      return h>=4&&h<7?0:h>=7&&h<11?1:h>=11&&h<16?2:h>=16&&h<19?3:h>=19&&h<21?4:5;
+      return h>=4&&h<7?0:h>=7&&h<11?1:h>=11&&h<16?2:h>=16&&h<19?3:h>=19&&h<21?4:h>=21?5:6;
     }
 
     function tick() {
