@@ -833,114 +833,108 @@ html.theme-transitioning *::after {
    Cycle: Dawn → Morning → Afternoon → Sunset → Twilight → Night
    ============================================================ */
 
-/* ---- 1. Dawn ---- */
+/* ---- 1. Dawn — rich warm amber ---- */
 html.theme-dawn {
-  --bg:          #FDF5EC;
-  --bg-top:      #FFF8F2;
-  --bg-rgb:      253, 245, 236;
-  --surface:     #FFFCF8;
-  --text:        #2A1C0C;
-  --text-muted:  #7A5A30;
-  --text-subtle: #C0A070;
-  --accent:      #CF7820;
-  --accent-dark: #A85E10;
-  --accent-bg:   #FEF3DC;
-  --border:      #EAD8BC;
-  --border-light:#F2E6CC;
-  --pre-bg:      #2A1C0C;
-  --pre-color:   #F2E6CC;
+  --bg:          #FDECD0;
+  --bg-top:      #FFF6EC;
+  --surface:     #FFF9F3;
+  --text:        #2C1800;
+  --text-muted:  #7C5018;
+  --text-subtle: #B88840;
+  --accent:      #D88020;
+  --accent-dark: #B06010;
+  --accent-bg:   #FDE4A8;
+  --border:      #E8C880;
+  --border-light:#F2DAAA;
+  --pre-bg:      #2C1800;
+  --pre-color:   #F2DAAA;
 }
 
-/* ---- 2. Morning (default — already in :root) ---- */
+/* ---- 2. Morning — warm cream, deep coral ---- */
 html.theme-morning {
-  --bg:          #F8F5F0;
-  --bg-top:      #FFFFFF;
-  --bg-rgb:      248, 245, 240;
+  --bg:          #F5EFE6;
+  --bg-top:      #FDFAF6;
   --surface:     #FFFFFF;
-  --text:        #1A1614;
-  --text-muted:  #6B6058;
-  --text-subtle: #A8A098;
-  --accent:      #C84B24;
-  --accent-dark: #A33B1A;
-  --accent-bg:   #FEF0EA;
-  --border:      #E3DDD6;
-  --border-light:#EDE9E3;
-  --pre-bg:      #1A1614;
-  --pre-color:   #F5F0EB;
+  --text:        #1A1410;
+  --text-muted:  #685848;
+  --text-subtle: #A89080;
+  --accent:      #D05028;
+  --accent-dark: #A83C1E;
+  --accent-bg:   #FDEAE0;
+  --border:      #DDD0C4;
+  --border-light:#EAE1D8;
+  --pre-bg:      #1A1410;
+  --pre-color:   #EAE1D8;
 }
 
-/* ---- 3. Afternoon ---- */
+/* ---- 3. Afternoon — golden honey ---- */
 html.theme-afternoon {
-  --bg:          #FBF6E8;
-  --bg-top:      #FFFDF5;
-  --bg-rgb:      251, 246, 232;
-  --surface:     #FFFDF5;
-  --text:        #1E1800;
-  --text-muted:  #5C4E10;
-  --text-subtle: #A89040;
-  --accent:      #C89000;
-  --accent-dark: #A07200;
-  --accent-bg:   #FEF4CC;
-  --border:      #E8D890;
-  --border-light:#F2E8B0;
-  --pre-bg:      #1E1800;
-  --pre-color:   #F2E8B0;
+  --bg:          #F8F0C8;
+  --bg-top:      #FBF6DE;
+  --surface:     #FFFDF0;
+  --text:        #1E1600;
+  --text-muted:  #5E4C00;
+  --text-subtle: #A08820;
+  --accent:      #C89800;
+  --accent-dark: #9E7800;
+  --accent-bg:   #FEF0A0;
+  --border:      #DECA60;
+  --border-light:#EAD878;
+  --pre-bg:      #1E1600;
+  --pre-color:   #EAD878;
 }
 
-/* ---- 4. Sunset ---- */
+/* ---- 4. Sunset — vivid coral-orange ---- */
 html.theme-sunset {
-  --bg:          #F8EEE6;
-  --bg-top:      #FFF0E4;
-  --bg-rgb:      248, 238, 230;
-  --surface:     #FFF8F4;
-  --text:        #280A00;
-  --text-muted:  #7A3018;
-  --text-subtle: #C08060;
-  --accent:      #C83018;
-  --accent-dark: #A02010;
-  --accent-bg:   #FEEAE0;
-  --border:      #EAC4B0;
-  --border-light:#F2D8C8;
-  --pre-bg:      #280A00;
-  --pre-color:   #F2D8C8;
+  --bg:          #F5DCC8;
+  --bg-top:      #FBECE0;
+  --surface:     #FFF5EE;
+  --text:        #300800;
+  --text-muted:  #842C10;
+  --text-subtle: #C07050;
+  --accent:      #D84020;
+  --accent-dark: #AC2E16;
+  --accent-bg:   #FDD8C8;
+  --border:      #E8A888;
+  --border-light:#F0C0A8;
+  --pre-bg:      #300800;
+  --pre-color:   #F0C0A8;
 }
 
-/* ---- 5. Twilight ---- */
+/* ---- 5. Twilight — deep violet ---- */
 html.theme-twilight {
-  --bg:          #EEEAF8;
-  --bg-top:      #E8E2F8;
-  --bg-rgb:      238, 234, 248;
-  --surface:     #F8F6FF;
-  --text:        #140A30;
-  --text-muted:  #4A3880;
-  --text-subtle: #9080C0;
-  --accent:      #5840D0;
-  --accent-dark: #3E2CA8;
-  --accent-bg:   #EAE4FC;
-  --border:      #C8BAE8;
-  --border-light:#D8CEF2;
-  --pre-bg:      #140A30;
-  --pre-color:   #D8CEF2;
+  --bg:          #DDD4F8;
+  --bg-top:      #D4C8F8;
+  --surface:     #F0ECFF;
+  --text:        #140830;
+  --text-muted:  #4A3080;
+  --text-subtle: #8068C0;
+  --accent:      #6040E0;
+  --accent-dark: #4828C0;
+  --accent-bg:   #D8CCFC;
+  --border:      #B4A0E0;
+  --border-light:#C8B8EC;
+  --pre-bg:      #140830;
+  --pre-color:   #C8B8EC;
 }
 
-/* ---- 6. Night ---- */
+/* ---- 6. Night — rich dark indigo ---- */
 html.theme-night {
-  --bg:          #121016;
-  --bg-top:      #1A1628;
-  --bg-rgb:      18, 16, 22;
-  --surface:     #1C1A22;
-  --text:        #EDE8F4;
-  --text-muted:  #C0B8D4;
-  --text-subtle: #6A6080;
-  --accent:      #A888F0;
-  --accent-dark: #8860D8;
-  --accent-bg:   #241C38;
-  --border:      #2C2838;
-  --border-light:#241E30;
-  --pre-bg:      #0C0A10;
-  --pre-color:   #C0B8D4;
+  --bg:          #0E0C18;
+  --bg-top:      #181428;
+  --surface:     #1C1828;
+  --text:        #F0ECF8;
+  --text-muted:  #C8C0E0;
+  --text-subtle: #706088;
+  --accent:      #B898FF;
+  --accent-dark: #9070F0;
+  --accent-bg:   #281C48;
+  --border:      #302840;
+  --border-light:#281E38;
+  --pre-bg:      #0A0812;
+  --pre-color:   #C8C0E0;
 
-  --shadow-sm: 0 1px 3px rgba(0,0,0,.3), 0 1px 2px rgba(0,0,0,.3);
-  --shadow-md: 0 4px 12px rgba(0,0,0,.4), 0 2px 4px rgba(0,0,0,.3);
-  --shadow-lg: 0 8px 24px rgba(0,0,0,.5), 0 4px 8px rgba(0,0,0,.35);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.4), 0 1px 2px rgba(0,0,0,.4);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.5), 0 2px 4px rgba(0,0,0,.4);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,.6), 0 4px 8px rgba(0,0,0,.45);
 }
