@@ -1,0 +1,28 @@
+---
+permalink: /blog/
+title: "Blog"
+layout: page
+---
+
+<ul class="post-list">
+  {% assign visible_posts = site.posts | where_exp: "post", "post.hidden != true" %}
+  {% for post in visible_posts %}
+  <li class="post-list-item">
+    <a href="{{ post.url }}" class="post-list-link">
+      <div>
+        <span class="post-list-title">{{ post.title }}</span>
+        {% if post.tags.size > 0 %}
+        <div class="post-list-tags">
+          {% for tag in post.tags %}<span class="post-list-tag">{{ tag }}</span>{% endfor %}
+        </div>
+        {% endif %}
+      </div>
+      <time class="post-list-date" datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%b %-d, %Y" }}</time>
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+
+{% if visible_posts.size == 0 %}
+<p class="blog-empty">No posts yet — check back soon.</p>
+{% endif %}

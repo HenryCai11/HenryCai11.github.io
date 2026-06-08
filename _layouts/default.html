@@ -1,31 +1,74 @@
 ---
-layout: compress
 ---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title and page.title != "About" %}{{ page.title }} — {% endif %}{{ site.name }}</title>
+  <meta name="description" content="{{ site.description }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;1,14..32,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="icon" href="/images/favicon.ico">
+  {% feed_meta %}
+</head>
+<body>
 
-{% include base_path %}
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="/" class="site-brand">Min Cai</a>
+    <nav class="site-nav" id="siteNav">
+      <a href="/" class="nav-link{% if page.url == '/' or page.url == '/about/' or page.url == '/about.html' %} active{% endif %}">About</a>
+      <a href="/blog/" class="nav-link{% if page.url contains '/blog' or page.url contains '/posts' %} active{% endif %}">Blog</a>
+      <a href="/files/CV_Min.pdf" class="nav-link" target="_blank" rel="noopener">CV&nbsp;↗</a>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+</header>
 
-<!doctype html>
-<html lang="{{ site.locale | slice: 0,2 }}" class="no-js">
-  <head>
-    {% include head.html %}
-    {% include head/custom.html %}
-  </head>
+<main class="site-main">
+  {{ content }}
+</main>
 
-  <body>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span>© {{ site.time | date: '%Y' }} Min Cai</span>
+    <span class="footer-sep">·</span>
+    <a href="https://github.com/HenryCai11" target="_blank" rel="noopener">GitHub</a>
+    <span class="footer-sep">·</span>
+    <a href="https://scholar.google.com/citations?user=QMTSC0oAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+    <span class="footer-sep">·</span>
+    <a href="https://orcid.org/0000-0002-3694-7875" target="_blank" rel="noopener">ORCID</a>
+  </div>
+</footer>
 
-    {% include browser-upgrade.html %}
-    {% include masthead.html %}
+<script>
+  (function () {
+    var toggle = document.getElementById('menuToggle');
+    var nav = document.getElementById('siteNav');
+    toggle.addEventListener('click', function () {
+      var expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('open');
+      toggle.classList.toggle('open');
+    });
+    document.addEventListener('click', function (e) {
+      if (!toggle.contains(e.target) && !nav.contains(e.target)) {
+        nav.classList.remove('open');
+        toggle.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+</script>
 
-    {{ content }}
-
-    <div class="page__footer">
-      <footer>
-        {% include footer/custom.html %}
-        {% include footer.html %}
-      </footer>
-    </div>
-
-    {% include scripts.html %}
-
-  </body>
+</body>
 </html>
