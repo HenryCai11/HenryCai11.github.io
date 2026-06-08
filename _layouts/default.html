@@ -103,21 +103,15 @@
       return Math.floor(Date.now() / 60000) % themes.length;
     }
 
-    function applyTheme(showIndicator) {
-      var idx = getIndex();
+    var currentIdx = getIndex();
+
+    function applyTheme(idx, showIndicator) {
       var html = document.documentElement;
 
-      /* Enable transitions for this switch */
       html.classList.add('theme-transitioning');
-
-      /* Swap theme class */
       themes.forEach(function (t) { html.classList.remove(t.cls); });
       html.classList.add(themes[idx].cls);
-
-      /* Remove transition class after animation completes (2.6s headroom) */
-      setTimeout(function () {
-        html.classList.remove('theme-transitioning');
-      }, 2700);
+      setTimeout(function () { html.classList.remove('theme-transitioning'); }, 2700);
 
       if (showIndicator) {
         nameEl.textContent = themes[idx].label;
@@ -129,16 +123,25 @@
       }
     }
 
-    /* Schedule next switch at exact minute boundary */
-    function scheduleNext() {
-      var delay = 60000 - (Date.now() % 60000);
-      setTimeout(function () {
-        applyTheme(true);
-        scheduleNext();
-      }, delay);
-    }
+    /* Poll every 5 s — works even when browser throttles background tabs */
+    setInterval(function () {
+      var idx = getIndex();
+      if (idx !== currentIdx) {
+        currentIdx = idx;
+        applyTheme(idx, true);
+      }
+    }, 5000);
 
-    scheduleNext();
+    /* Re-sync immediately when the user returns to the tab */
+    document.addEventListener('visibilitychange', function () {
+      if (!document.hidden) {
+        var idx = getIndex();
+        if (idx !== currentIdx) {
+          currentIdx = idx;
+          applyTheme(idx, true);
+        }
+      }
+    });
   })();
 </script>
 
