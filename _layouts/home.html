@@ -63,118 +63,95 @@ layout: default
 </div>
 
 <script>
-/* ---- Vine / 藤蔓 bezier curves for paper trees ---- */
+/* ---- 藤蔓 vine curves for paper trees ---- */
 (function () {
   var NS = 'http://www.w3.org/2000/svg';
 
-  function rel(box, origin) {
-    /* Convert viewport-relative BoundingClientRect to coords inside `origin` */
-    var ob = origin.getBoundingClientRect();
-    return {
-      left:   box.left   - ob.left,
-      top:    box.top    - ob.top,
-      right:  box.right  - ob.left,
-      bottom: box.bottom - ob.top,
-      width:  box.width,
-      height: box.height
-    };
+  /* Relative position of `el` within `container` (both using viewport coords) */
+  function r(el, container) {
+    var eb = el.getBoundingClientRect();
+    var cb = container.getBoundingClientRect();
+    return { x: eb.left - cb.left, y: eb.top  - cb.top,
+             w: eb.width,          h: eb.height,
+             x2: eb.right - cb.left, y2: eb.bottom - cb.top };
   }
 
-  function cubicPath(x1, y1, x2, y2) {
-    /* Organic S-curve: start going down, then sweep to the right */
-    var dy = y2 - y1, dx = x2 - x1;
-    var cp1x = x1,              cp1y = y1 + dy * 0.55;
-    var cp2x = x2 - dx * 0.25, cp2y = y2;
-    return ('M ' + x1.toFixed(2) + ' ' + y1.toFixed(2) +
-            ' C ' + cp1x.toFixed(2) + ' ' + cp1y.toFixed(2) +
-            ', '  + cp2x.toFixed(2) + ' ' + cp2y.toFixed(2) +
-            ', '  + x2.toFixed(2)   + ' ' + y2.toFixed(2));
+  /* Cubic bezier: drop down from (x1,y1), then sweep right to (x2,y2) */
+  function path(x1, y1, x2, y2) {
+    var my = y1 + (y2 - y1) * 0.5;
+    return 'M' + f(x1) + ',' + f(y1) +
+           ' C' + f(x1) + ',' + f(my) +
+           ' '  + f(x2) + ',' + f(my) +
+           ' '  + f(x2) + ',' + f(y2);
   }
 
-  function addPath(svg, d, isMain) {
-    var p = document.createElementNS(NS, 'path');
-    p.setAttribute('d', d);
-    p.setAttribute('fill', 'none');
-    p.setAttribute('stroke-linecap', 'round');
-    p.style.setProperty('stroke',       isMain ? 'var(--accent)' : 'var(--border)');
-    p.style.setProperty('stroke-width', isMain ? '2'   : '1.5');
-    svg.appendChild(p);
-    return p;
-  }
+  function f(n) { return n.toFixed(1); }
 
-  function addDot(svg, x, y, isMain) {
+  function dot(svg, x, y, r, main) {
     var c = document.createElementNS(NS, 'circle');
-    c.setAttribute('cx', x.toFixed(2));
-    c.setAttribute('cy', y.toFixed(2));
-    c.setAttribute('r',  isMain ? '3.5' : '2.5');
-    c.style.setProperty('fill', isMain ? 'var(--accent)' : 'var(--border)');
+    c.setAttribute('cx', f(x)); c.setAttribute('cy', f(y)); c.setAttribute('r', r);
+    c.style.setProperty('fill', main ? 'var(--accent)' : 'var(--border)');
     svg.appendChild(c);
   }
 
-  function addLeafShape(svg, x, y) {
-    /* A tiny decorative leaf teardrop at each paper endpoint */
-    var g = document.createElementNS(NS, 'g');
-    g.setAttribute('transform', 'translate(' + x.toFixed(1) + ',' + y.toFixed(1) + ')');
-    var leaf = document.createElementNS(NS, 'path');
-    leaf.setAttribute('d', 'M0,0 C-4,-7 4,-11 0,-16 C-4,-11 4,-7 0,0');
-    leaf.style.setProperty('fill', 'var(--accent)');
-    leaf.style.opacity = '0.18';
-    g.appendChild(leaf);
-    svg.appendChild(g);
+  function line(svg, d, main) {
+    var p = document.createElementNS(NS, 'path');
+    p.setAttribute('d', d); p.setAttribute('fill', 'none');
+    p.setAttribute('stroke-linecap', 'round'); p.setAttribute('stroke-linejoin', 'round');
+    p.style.setProperty('stroke',       main ? 'var(--accent)' : 'var(--border)');
+    p.style.setProperty('stroke-width', main ? '2'             : '1.5');
+    svg.appendChild(p);
+    return p;
   }
 
   function drawTree(tree) {
     var old = tree.querySelector('.ptree-svg');
     if (old) old.remove();
 
+    /* Build SVG and append immediately so getTotalLength() works */
     var svg = document.createElementNS(NS, 'svg');
     svg.classList.add('ptree-svg');
     svg.setAttribute('aria-hidden', 'true');
+    tree.appendChild(svg);
 
     var paths = [];
+    var root  = tree.querySelector('.ptree-root');
+    var rr    = r(root, tree);
 
-    var rootEl  = tree.querySelector('.ptree-root');
-    var rootR   = rel(rootEl.getBoundingClientRect(), tree);
-    /* Trunk start: bottom of root pill, offset ~20px from left */
-    var tx = rootR.left + 20;
-    var ty = rootR.bottom;
+    /* Trunk anchor: bottom-left of root pill */
+    var tx = rr.x + 18, ty = rr.y2;
+    dot(svg, tx, ty, 3, true);
 
     tree.querySelectorAll('.ptree-branch').forEach(function (branch) {
-      var catEl = branch.querySelector('.ptree-cat-label');
-      var catR  = rel(catEl.getBoundingClientRect(), tree);
+      var cat  = branch.querySelector('.ptree-cat-label');
+      var cr   = r(cat, tree);
 
-      /* Root → category left-center */
-      var cx = catR.left;
-      var cy = catR.top + catR.height * 0.5;
-      paths.push(addPath(svg, cubicPath(tx, ty, cx, cy), true));
-      addDot(svg, cx, cy, true);
+      /* root → left-middle of category */
+      var cx = cr.x, cy = cr.y + cr.h * 0.5;
+      paths.push(line(svg, path(tx, ty, cx, cy), true));
+      dot(svg, cx, cy, 3, true);
 
-      /* Category bottom-ish → each leaf left-center */
-      var bx = catR.left  + catR.width  * 0.3;
-      var by = catR.bottom;
+      /* category bottom → left-upper of each leaf */
+      var bx = cr.x + cr.w * 0.25, by = cr.y2;
 
       branch.querySelectorAll('.ptree-leaf').forEach(function (leaf) {
-        var lR = rel(leaf.getBoundingClientRect(), tree);
-        var lx = lR.left;
-        var ly = lR.top + lR.height * 0.4;
-        paths.push(addPath(svg, cubicPath(bx, by, lx, ly), false));
-        addDot(svg, lx, ly, false);
-        addLeafShape(svg, lx - 1, ly - 1);
+        var lr = r(leaf, tree);
+        var lx = lr.x, ly = lr.y + lr.h * 0.35;
+        paths.push(line(svg, path(bx, by, lx, ly), false));
+        dot(svg, lx, ly, 2.5, false);
       });
     });
 
-    tree.appendChild(svg);
-
-    /* Animate: stroke-dashoffset draw after SVG is in DOM */
+    /* Animate: paths draw themselves in sequence */
+    paths.forEach(function (p, i) {
+      var len = p.getTotalLength() || 80;
+      p.style.strokeDasharray  = len;
+      p.style.strokeDashoffset = len;
+    });
     requestAnimationFrame(function () {
-      paths.forEach(function (p, i) {
-        var len = p.getTotalLength();
-        p.style.strokeDasharray  = len;
-        p.style.strokeDashoffset = len;
-      });
       requestAnimationFrame(function () {
         paths.forEach(function (p, i) {
-          p.style.transition = 'stroke-dashoffset 0.75s cubic-bezier(.4,0,.2,1) ' + (i * 0.12) + 's';
+          p.style.transition = 'stroke-dashoffset 0.8s cubic-bezier(.4,0,.2,1) ' + (i * 0.15) + 's';
           p.style.strokeDashoffset = '0';
         });
       });
@@ -185,20 +162,13 @@ layout: default
     document.querySelectorAll('.ptree').forEach(drawTree);
   }
 
-  /* Wait for fonts so layout is final */
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(drawAll);
-  } else {
-    window.addEventListener('load', drawAll);
-  }
+  window.addEventListener('load', drawAll);
 
-  /* Redraw on resize */
   window.addEventListener('resize', function () {
     clearTimeout(window._vineT);
-    window._vineT = setTimeout(drawAll, 180);
+    window._vineT = setTimeout(drawAll, 200);
   });
 
-  /* Expose so theme-change polling can redraw if needed */
   window._drawVines = drawAll;
 })();
 </script>
