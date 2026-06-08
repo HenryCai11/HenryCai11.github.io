@@ -15,6 +15,14 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
   <link rel="icon" href="/images/favicon.ico">
   {% feed_meta %}
+  <!-- Apply initial theme before render to avoid flash -->
+  <script>
+    (function () {
+      var themes = ['theme-dawn','theme-morning','theme-afternoon','theme-sunset','theme-twilight','theme-night'];
+      var idx = Math.floor(Date.now() / 60000) % themes.length;
+      document.documentElement.classList.add(themes[idx]);
+    })();
+  </script>
 </head>
 <body>
 
@@ -50,7 +58,14 @@
   </div>
 </footer>
 
+<!-- Theme indicator pill -->
+<div class="theme-indicator" id="themeIndicator">
+  <span class="theme-dot"></span>
+  <span id="themeName"></span>
+</div>
+
 <script>
+  /* ---- Mobile nav ---- */
   (function () {
     var toggle = document.getElementById('menuToggle');
     var nav = document.getElementById('siteNav');
@@ -67,6 +82,53 @@
         toggle.setAttribute('aria-expanded', 'false');
       }
     });
+  })();
+
+  /* ---- Day → Night theme cycle ---- */
+  (function () {
+    var themes = [
+      { cls: 'theme-dawn',      label: 'Dawn'      },
+      { cls: 'theme-morning',   label: 'Morning'   },
+      { cls: 'theme-afternoon', label: 'Afternoon' },
+      { cls: 'theme-sunset',    label: 'Sunset'    },
+      { cls: 'theme-twilight',  label: 'Twilight'  },
+      { cls: 'theme-night',     label: 'Night'     }
+    ];
+
+    var indicator = document.getElementById('themeIndicator');
+    var nameEl    = document.getElementById('themeName');
+    var hideTimer = null;
+
+    function getIndex() {
+      return Math.floor(Date.now() / 60000) % themes.length;
+    }
+
+    function applyTheme(showIndicator) {
+      var idx = getIndex();
+      var html = document.documentElement;
+      themes.forEach(function (t) { html.classList.remove(t.cls); });
+      html.classList.add(themes[idx].cls);
+
+      if (showIndicator) {
+        nameEl.textContent = themes[idx].label;
+        clearTimeout(hideTimer);
+        indicator.classList.add('visible');
+        hideTimer = setTimeout(function () {
+          indicator.classList.remove('visible');
+        }, 3000);
+      }
+    }
+
+    /* Schedule next switch at exact minute boundary */
+    function scheduleNext() {
+      var delay = 60000 - (Date.now() % 60000);
+      setTimeout(function () {
+        applyTheme(true);
+        scheduleNext();
+      }, delay);
+    }
+
+    scheduleNext();
   })();
 </script>
 
