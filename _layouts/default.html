@@ -106,8 +106,18 @@
     function applyTheme(showIndicator) {
       var idx = getIndex();
       var html = document.documentElement;
+
+      /* Enable transitions for this switch */
+      html.classList.add('theme-transitioning');
+
+      /* Swap theme class */
       themes.forEach(function (t) { html.classList.remove(t.cls); });
       html.classList.add(themes[idx].cls);
+
+      /* Remove transition class after animation completes (2.6s headroom) */
+      setTimeout(function () {
+        html.classList.remove('theme-transitioning');
+      }, 2700);
 
       if (showIndicator) {
         nameEl.textContent = themes[idx].label;
@@ -115,7 +125,7 @@
         indicator.classList.add('visible');
         hideTimer = setTimeout(function () {
           indicator.classList.remove('visible');
-        }, 3000);
+        }, 3500);
       }
     }
 

@@ -762,47 +762,30 @@ a:hover { color: var(--accent-dark); }
 }
 
 /* ============================================================
-   THEME TRANSITIONS — smooth color shifts between palettes
+   THEME TRANSITIONS
+   Only active during the switch window (class added by JS).
+   Using * + !important so every element — including SVG icons —
+   transitions together instead of popping.
    ============================================================ */
-body,
-.site-header,
-.site-footer,
-.site-brand,
-.nav-link,
-.profile-sidebar,
-.profile-link,
-.home-content,
-.pub-card,
-.pub-thumb,
-.pub-venue,
-.pub-award,
-.pub-btn,
-.pub-btn.primary,
-.post-list-item,
-.post-list-link,
-.post-list-date,
-.post-list-tag,
-.tag,
-.page-layout,
-.post-layout,
-.post-header,
-.post-footer,
-.back-link,
-.prose blockquote,
-.prose code,
-.prose pre,
-.prose table,
-.prose th,
-.prose td,
-.footer-inner,
-.profile-photo,
-.theme-indicator {
+html.theme-transitioning *,
+html.theme-transitioning *::before,
+html.theme-transitioning *::after {
   transition:
-    background-color 1.2s ease,
-    background     1.2s ease,
-    color          0.9s ease,
-    border-color   1.0s ease,
-    box-shadow     1.0s ease;
+    background-color 2.4s ease-in-out,
+    background       2.4s ease-in-out,
+    color            2.0s ease-in-out,
+    border-color     2.0s ease-in-out,
+    box-shadow       2.0s ease-in-out,
+    fill             2.0s ease-in-out,
+    stroke           2.0s ease-in-out !important;
+}
+
+/* The indicator pill itself always transitions independently */
+.theme-indicator {
+  transition: opacity 0.6s ease, transform 0.6s ease,
+              background-color 2.4s ease-in-out,
+              border-color 2.0s ease-in-out,
+              color 2.0s ease-in-out;
 }
 
 /* ---- Theme Indicator pill ---- */
