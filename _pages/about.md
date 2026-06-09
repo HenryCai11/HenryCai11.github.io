@@ -25,7 +25,7 @@ I have broad interests in ML and NLP, particularly in understanding the mechanis
   </div>
   <div class="news-item">
     <span class="news-date">Apr 2025</span>
-    <span class="news-text">Preprint "<a href="https://arxiv.org/abs/2504.02904">How Post-Training Reshapes LLMs</a>" receives <strong>Outstanding Paper</strong> at the New England NLP Workshop.</span>
+    <span class="news-text"><a href="https://arxiv.org/abs/2504.02904">How Post-Training Reshapes LLMs</a> accepted to <strong>COLM 2025</strong>; also received <strong>Outstanding Paper</strong> at the New England NLP Workshop.</span>
   </div>
   <div class="news-item">
     <span class="news-date">Jan 2025</span>
@@ -84,7 +84,7 @@ I have broad interests in ML and NLP, particularly in understanding the mechanis
       <div class="ptree-cat-label">Post-Training Analysis</div>
       <div class="ptree-leaves">
         <div class="ptree-leaf">
-          <span class="ptree-leaf-venue">Preprint</span>
+          <span class="ptree-leaf-venue">COLM 2025</span>
           <a class="ptree-leaf-title" href="https://arxiv.org/abs/2504.02904" target="_blank" rel="noopener">How Post-Training Reshapes LLMs: A Mechanistic View on Knowledge, Truthfulness, Refusal, and Confidence</a>
           <span class="ptree-leaf-award">★ Outstanding Paper — New England NLP Workshop</span>
         </div>
