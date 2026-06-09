@@ -104,9 +104,8 @@
     <span class="footer-sep">·</span>
     <a href="https://orcid.org/0000-0002-3694-7875" target="_blank" rel="noopener">ORCID</a>
     <span class="footer-sep">·</span>
-    <span class="visit-counter" id="visitCounter" aria-label="Total page visits">
-      <span id="visitCount">·</span> visits
-    </span>
+    <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2FHenryCai11.github.io&count_bg=%23888888&title_bg=%23555555&title=visits&edge_flat=true"
+         alt="visit counter" class="visit-badge">
   </div>
 </footer>
 
@@ -164,32 +163,6 @@
     document.addEventListener('visibilitychange', function(){ if (!document.hidden) tick(); });
   })();
 
-  /* ---- Visit counter (hits.seeyoufarm.com) ---- */
-  (function () {
-    var BADGE = 'https://hits.seeyoufarm.com/api/count/incr/badge.svg' +
-      '?url=https%3A%2F%2FHenryCai11.github.io' +
-      '&count_bg=%23888888&title_bg=%23555555' +
-      '&title=visits&edge_flat=true';
-    var el = document.getElementById('visitCount');
-
-    /* Guarantee the hit is recorded even if fetch is CORS-blocked */
-    new Image().src = BADGE;
-
-    /* Try to parse the total out of the SVG and render as text */
-    fetch(BADGE)
-      .then(function (r) { return r.text(); })
-      .then(function (svg) {
-        /* Badge text is "today / total" */
-        var m = svg.match(/(\d+)\s*\/\s*(\d+)/);
-        if (m && el) el.textContent = Number(m[2]).toLocaleString();
-      })
-      .catch(function () {
-        /* CORS blocked — fall back to the badge image */
-        var wrap = document.getElementById('visitCounter');
-        if (wrap) wrap.innerHTML =
-          '<img src="' + BADGE + '" alt="visit counter" class="visit-badge">';
-      });
-  })();
 </script>
 
 </body>
