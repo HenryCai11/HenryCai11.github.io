@@ -103,6 +103,10 @@
     <a href="https://scholar.google.com/citations?user=QMTSC0oAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
     <span class="footer-sep">·</span>
     <a href="https://orcid.org/0000-0002-3694-7875" target="_blank" rel="noopener">ORCID</a>
+    <span class="footer-sep">·</span>
+    <span class="visit-counter" id="visitCounter" aria-label="Total page visits">
+      <span id="visitCount">·</span> visits
+    </span>
   </div>
 </footer>
 
@@ -158,6 +162,20 @@
 
     setInterval(tick, 30000);
     document.addEventListener('visibilitychange', function(){ if (!document.hidden) tick(); });
+  })();
+
+  /* ---- Visit counter ---- */
+  (function () {
+    fetch('https://api.counterapi.dev/v1/HenryCai11-github-io/visits/up')
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        var n = d.count || d.value || d.hits;
+        if (n != null) {
+          document.getElementById('visitCount').textContent =
+            Number(n).toLocaleString();
+        }
+      })
+      .catch(function () {});
   })();
 </script>
 

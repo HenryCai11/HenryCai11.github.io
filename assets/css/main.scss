@@ -702,6 +702,8 @@ a:hover { color: var(--accent-dark); }
 .footer-sep { color: var(--border); }
 .footer-inner a { color: var(--text-subtle) !important; }
 .footer-inner a:hover { color: var(--text-muted) !important; }
+.visit-counter { color: var(--text-subtle); }
+.visit-counter #visitCount { color: var(--text-muted); font-variant-numeric: tabular-nums; }
 
 /* ============================================================
    RESPONSIVE
