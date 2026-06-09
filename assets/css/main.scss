@@ -704,6 +704,7 @@ a:hover { color: var(--accent-dark); }
 .footer-inner a:hover { color: var(--text-muted) !important; }
 .visit-counter { color: var(--text-subtle); }
 .visit-counter #visitCount { color: var(--text-muted); font-variant-numeric: tabular-nums; }
+.visit-badge { height: 16px; vertical-align: middle; opacity: 0.8; }
 
 /* ============================================================
    RESPONSIVE

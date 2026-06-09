@@ -164,18 +164,31 @@
     document.addEventListener('visibilitychange', function(){ if (!document.hidden) tick(); });
   })();
 
-  /* ---- Visit counter ---- */
+  /* ---- Visit counter (hits.seeyoufarm.com) ---- */
   (function () {
-    fetch('https://api.counterapi.dev/v1/HenryCai11-github-io/visits/up')
-      .then(function (r) { return r.json(); })
-      .then(function (d) {
-        var n = d.count || d.value || d.hits;
-        if (n != null) {
-          document.getElementById('visitCount').textContent =
-            Number(n).toLocaleString();
-        }
+    var BADGE = 'https://hits.seeyoufarm.com/api/count/incr/badge.svg' +
+      '?url=https%3A%2F%2FHenryCai11.github.io' +
+      '&count_bg=%23888888&title_bg=%23555555' +
+      '&title=visits&edge_flat=true';
+    var el = document.getElementById('visitCount');
+
+    /* Guarantee the hit is recorded even if fetch is CORS-blocked */
+    new Image().src = BADGE;
+
+    /* Try to parse the total out of the SVG and render as text */
+    fetch(BADGE)
+      .then(function (r) { return r.text(); })
+      .then(function (svg) {
+        /* Badge text is "today / total" */
+        var m = svg.match(/(\d+)\s*\/\s*(\d+)/);
+        if (m && el) el.textContent = Number(m[2]).toLocaleString();
       })
-      .catch(function () {});
+      .catch(function () {
+        /* CORS blocked — fall back to the badge image */
+        var wrap = document.getElementById('visitCounter');
+        if (wrap) wrap.innerHTML =
+          '<img src="' + BADGE + '" alt="visit counter" class="visit-badge">';
+      });
   })();
 </script>
 
