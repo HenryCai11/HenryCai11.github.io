@@ -57,14 +57,13 @@
 
       var i = 0;
       while (i < CP.length-2 && CP[i+1].t <= m) i++;
-      var c1=CP[i], c2=CP[i+1];
-      var f = Math.max(0, Math.min(1, (m-c1.t)/(c2.t-c1.t)));
+      var c1 = CP[i];
 
       var keys = Object.keys(c1.v);
       for (var k=0; k<keys.length; k++) {
-        root.style.setProperty(keys[k], lerp(c1.v[keys[k]], c2.v[keys[k]], f));
+        root.style.setProperty(keys[k], c1.v[keys[k]]);
       }
-      var bgRgb = rgb(lerp(c1.v['--bg'], c2.v['--bg'], f));
+      var bgRgb = rgb(c1.v['--bg']);
       root.style.setProperty('--bg-rgb', bgRgb.join(','));
     }
 
