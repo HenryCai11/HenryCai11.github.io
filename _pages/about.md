@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-Hi, I'm **Min Cai (蔡旻)**. I'm an incoming PhD student at the University of Alberta, supervised by <a href="https://xiye17.github.io">Dr. Xi Ye</a>. Previously, I was an M.S. student graduated from Shenzhen University, where I was supervised by <a href="https://hdzhangust.github.io">Prof. Haodi Zhang</a>. Before that, I obtained my B.A. in Translation from Beijing Language and Culture University. Currently, I'm interning at Zhipu AI, mentored by <a href="https://zhangdan0602.github.io">Dr. Dan Zhang</a>. I also work closely with <a href="https://acbull.github.io">Dr. Ziniu Hu</a>, <a href="https://shichangzh.github.io">Dr. Shichang Zhang</a>, and <a href="https://difanzou.github.io">Dr. Difan Zou</a>.
+Hi, I'm **Min Cai (蔡旻)**. I'm an incoming PhD student at the University of Alberta, supervised by <a href="https://xiye17.github.io">Dr. Xi Ye</a>. Previously, I was an M.S. student graduated from Shenzhen University, where I was supervised by <a href="https://hdzhangust.github.io">Prof. Haodi Zhang</a>. Before that, I obtained my B.A. in Translation from Beijing Language and Culture University. I also work closely with <a href="https://zhangdan0602.github.io">Dr. Dan Zhang</a>, <a href="https://acbull.github.io">Dr. Ziniu Hu</a>, <a href="https://shichangzh.github.io">Dr. Shichang Zhang</a>, and <a href="https://difanzou.github.io">Dr. Difan Zou</a>.
 
 I have broad interests in ML and NLP, particularly in understanding the mechanisms behind neural language models, developing LLM agents capable of solving complex problems, and enhancing LLM reasoning. **My primary focus is on inference-time algorithms for alignment and reasoning in LLMs.**
 
