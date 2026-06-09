@@ -56,6 +56,10 @@ I have broad interests in ML and NLP, particularly in understanding the mechanis
           <span class="ptree-leaf-venue">NeurIPS 2023 Workshop</span>
           <a class="ptree-leaf-title" href="https://arxiv.org/abs/2310.05036" target="_blank" rel="noopener">AvalonBench: Evaluating LLMs Playing the Game of Avalon</a>
         </div>
+        <div class="ptree-leaf">
+          <span class="ptree-leaf-venue">ACL 2026 Findings</span>
+          <a class="ptree-leaf-title" href="https://arxiv.org/abs/2502.13897" target="_blank" rel="noopener">DataSciBench: An LLM Agent Benchmark for Data Science</a>
+        </div>
       </div>
     </div>
 
@@ -93,6 +97,34 @@ I have broad interests in ML and NLP, particularly in understanding the mechanis
         <div class="ptree-leaf">
           <span class="ptree-leaf-venue">ICML 2024 Workshop</span>
           <a class="ptree-leaf-title" href="https://arxiv.org/abs/2406.02721" target="_blank" rel="noopener">Self-Control of LLM Behaviors by Compressing Suffix Gradient into Prefix Controller</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="ptree ptree-wide">
+  <div class="ptree-root">Training &amp; Alignment</div>
+  <div class="ptree-branches">
+
+    <div class="ptree-branch">
+      <div class="ptree-cat-label">Reward Modeling</div>
+      <div class="ptree-leaves">
+        <div class="ptree-leaf">
+          <span class="ptree-leaf-venue">arXiv 2025</span>
+          <a class="ptree-leaf-title" href="https://arxiv.org/abs/2509.15110" target="_blank" rel="noopener">TDRM: Smooth Reward Models with Temporal Difference for LLM RL and Inference</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ptree-branch">
+      <div class="ptree-cat-label">Reasoning Models</div>
+      <div class="ptree-leaves">
+        <div class="ptree-leaf">
+          <span class="ptree-leaf-venue">arXiv 2026</span>
+          <a class="ptree-leaf-title" href="https://arxiv.org/abs/2602.02301" target="_blank" rel="noopener">Advancing General-Purpose Reasoning Models with Modular Gradient Surgery</a>
         </div>
       </div>
     </div>

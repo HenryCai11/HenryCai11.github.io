@@ -1110,6 +1110,29 @@ html.theme-night {
   margin-top: 0.22rem;
 }
 
+/* Third tree: spans both columns, branches spread horizontally */
+.ptree-wide {
+  grid-column: 1 / -1;
+}
+
+.ptree-wide .ptree-branches {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.ptree-wide .ptree-branch {
+  flex: 1;
+  min-width: 0;
+  padding-left: 0;
+  padding-right: 2rem;
+  padding-top: 3rem;  /* vertical room so vine curves fan out nicely */
+}
+
+.ptree-wide .ptree-branch:last-child {
+  padding-right: 0;
+}
+
 /* SVG vine overlay — drawn by JS */
 .ptree-svg {
   position: absolute;
