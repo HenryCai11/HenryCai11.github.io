@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Blog Admin — Min Cai</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/marked@9/marked.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #F8F7F5;
+      --surface:      #FFFFFF;
+      --border:       #E2DDD8;
+      --text:         #1A1614;
+      --text-muted:   #6B6560;
+      --accent:       #C84B24;
+      --accent-h:     #A83C1E;
+      --accent-soft:  #FDEAE0;
+      --danger:       #DC2626;
+      --danger-soft:  #FEE2E2;
+      --radius:       8px;
+      --sb-w:         272px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      background: var(--bg);
+      color: var(--text);
+      height: 100dvh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Login ─────────────────────────────────────────────── */
+    #login {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .login-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2.5rem;
+      width: 380px;
+      box-shadow: 0 6px 32px rgba(0,0,0,.07);
+    }
+    .login-logo {
+      width: 36px; height: 36px;
+      background: var(--accent);
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+    .login-card h1 { font-size: 1.3rem; font-weight: 600; margin-bottom: .3rem; }
+    .login-card p  { color: var(--text-muted); font-size: .82rem; line-height: 1.55; margin-bottom: 1.5rem; }
+
+    .field { margin-bottom: 1rem; }
+    .field label { display: block; font-size: .78rem; font-weight: 500; margin-bottom: .35rem; }
+    .field input {
+      width: 100%;
+      padding: .55rem .75rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-family: inherit; font-size: .875rem;
+      background: var(--bg); color: var(--text);
+      outline: none; transition: border-color .15s;
+    }
+    .field input:focus { border-color: var(--accent); }
+
+    #login-error {
+      margin-top: .75rem;
+      font-size: .78rem;
+      color: var(--danger);
+      display: none;
+    }
+
+    /* ── Buttons ──────────────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
+      padding: .5rem 1rem;
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      font-family: inherit; font-size: .82rem; font-weight: 500;
+      cursor: pointer; transition: background .13s, border-color .13s, color .13s;
+      white-space: nowrap;
+    }
+    .btn:disabled { opacity: .45; cursor: not-allowed; }
+    .btn-primary  { background: var(--accent); color: #fff; width: 100%; }
+    .btn-primary:not(:disabled):hover { background: var(--accent-h); }
+    .btn-ghost    { background: transparent; color: var(--text-muted); border-color: var(--border); }
+    .btn-ghost:hover { background: var(--border); color: var(--text); }
+    .btn-save     { background: var(--accent); color: #fff; padding: .38rem .9rem; font-size: .8rem; }
+    .btn-save:not(:disabled):hover { background: var(--accent-h); }
+
+    /* ── App shell ────────────────────────────────────────── */
+    #app { flex: 1; display: none; flex-direction: column; overflow: hidden; }
+
+    .app-bar {
+      height: 46px; flex-shrink: 0;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; padding: 0 1rem; gap: .75rem;
+    }
+    .app-bar-brand { font-size: .875rem; font-weight: 600; flex: 1; }
+    .app-bar-brand span { color: var(--text-muted); font-weight: 400; }
+
+    .app-body { display: flex; flex: 1; overflow: hidden; }
+
+    /* ── Sidebar ──────────────────────────────────────────── */
+    .sidebar {
+      width: var(--sb-w); flex-shrink: 0;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      display: flex; flex-direction: column; overflow: hidden;
+    }
+    .sb-top {
+      padding: .65rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .btn-new {
+      width: 100%; display: flex; align-items: center; justify-content: center;
+      gap: .4rem; padding: .5rem;
+      background: var(--accent); color: #fff;
+      border: none; border-radius: var(--radius);
+      font-family: inherit; font-size: .82rem; font-weight: 500;
+      cursor: pointer; transition: background .13s;
+    }
+    .btn-new:hover { background: var(--accent-h); }
+
+    #post-list { flex: 1; overflow-y: auto; padding: .4rem; }
+
+    .post-item {
+      display: flex; align-items: center; gap: .5rem;
+      padding: .45rem .55rem;
+      border-radius: 6px; cursor: pointer;
+      transition: background .1s;
+    }
+    .post-item:hover { background: var(--bg); }
+    .post-item.active { background: var(--accent-soft); }
+
+    .pi-info { flex: 1; min-width: 0; }
+    .pi-title {
+      font-size: .8rem; font-weight: 500;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .pi-date { font-size: .7rem; color: var(--text-muted); margin-top: 1px; }
+
+    .pi-del {
+      opacity: 0; flex-shrink: 0;
+      background: none; border: none; cursor: pointer;
+      color: var(--text-muted); border-radius: 4px;
+      padding: 2px 5px; font-size: .95rem; line-height: 1;
+      transition: opacity .1s, color .1s, background .1s;
+    }
+    .post-item:hover .pi-del { opacity: 1; }
+    .pi-del:hover { color: var(--danger); background: var(--danger-soft); }
+
+    .list-msg { padding: .9rem .6rem; color: var(--text-muted); font-size: .78rem; }
+
+    /* ── Editor pane ──────────────────────────────────────── */
+    .editor-pane { flex: 1; display: flex; flex-direction: column; overflow: hidden; min-width: 0; }
+
+    .empty-state {
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: .6rem; color: var(--text-muted); font-size: .875rem;
+    }
+    .empty-state svg { opacity: .25; }
+
+    #has-post { flex: 1; display: none; flex-direction: column; overflow: hidden; }
+
+    .ed-toolbar {
+      padding: .55rem .85rem;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface); flex-shrink: 0;
+      display: flex; align-items: center; gap: .6rem;
+    }
+    .meta-row { display: flex; gap: .45rem; flex: 1; align-items: center; min-width: 0; }
+    .meta-row input {
+      border: 1px solid var(--border); border-radius: 6px;
+      padding: .3rem .6rem;
+      font-family: inherit; font-size: .82rem;
+      background: var(--bg); color: var(--text); outline: none;
+      transition: border-color .15s;
+    }
+    .meta-row input:focus { border-color: var(--accent); }
+    #m-title { flex: 2; min-width: 0; }
+    #m-date  { width: 130px; flex-shrink: 0; }
+    #m-tags  { flex: 1; min-width: 0; }
+
+    .tab-grp { display: flex; gap: 2px; flex-shrink: 0; }
+    .tab-btn {
+      padding: .28rem .65rem;
+      border: 1px solid var(--border); border-radius: 5px;
+      background: transparent; font-family: inherit; font-size: .75rem;
+      color: var(--text-muted); cursor: pointer; transition: all .12s;
+    }
+    .tab-btn.on { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    .ed-body { display: flex; flex: 1; overflow: hidden; }
+
+    #md-area {
+      flex: 1; border: none; outline: none; resize: none;
+      padding: 1.25rem 1.5rem;
+      font-family: 'SF Mono', 'Fira Code', 'Menlo', monospace;
+      font-size: .83rem; line-height: 1.75;
+      color: var(--text); background: var(--bg);
+      border-right: 1px solid var(--border);
+    }
+
+    #preview {
+      flex: 1; padding: 1.25rem 1.75rem;
+      overflow-y: auto; line-height: 1.75; font-size: .9rem;
+    }
+    #preview h1,#preview h2,#preview h3 { font-weight: 600; margin: 1.4em 0 .45em; }
+    #preview h1 { font-size: 1.45rem; }
+    #preview h2 { font-size: 1.2rem; }
+    #preview h3 { font-size: 1rem; }
+    #preview p  { margin-bottom: .9em; }
+    #preview a  { color: var(--accent); text-decoration: none; }
+    #preview a:hover { text-decoration: underline; }
+    #preview code { background:#f0ede8; padding:.12em .38em; border-radius:4px; font-size:.82em; }
+    #preview pre  { background:#f0ede8; padding:1em 1.1em; border-radius:8px; overflow-x:auto; margin-bottom:.9em; }
+    #preview pre code { background:none; padding:0; }
+    #preview ul,#preview ol { margin-left:1.4rem; margin-bottom:.9em; }
+    #preview li { margin-bottom:.2em; }
+    #preview blockquote { border-left:3px solid var(--border); padding-left:1rem; color:var(--text-muted); margin-bottom:.9em; }
+    #preview hr { border:none; border-top:1px solid var(--border); margin:1.5em 0; }
+    #preview img { max-width:100%; border-radius:6px; }
+
+    /* ── Status bar ───────────────────────────────────────── */
+    .status-bar {
+      height: 24px; flex-shrink: 0;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+      display: flex; align-items: center; padding: 0 1rem;
+      gap: .5rem; font-size: .72rem; color: var(--text-muted);
+    }
+    #status-msg { flex: 1; }
+    #status-chars { }
+
+    /* ── Toast ────────────────────────────────────────────── */
+    #toast {
+      position: fixed; bottom: 1.25rem; right: 1.25rem;
+      background: #1A1614; color: #fff;
+      padding: .55rem 1rem; border-radius: 8px;
+      font-size: .82rem; opacity: 0;
+      transition: opacity .18s; pointer-events: none;
+      z-index: 999;
+    }
+    #toast.show { opacity: 1; }
+    #toast.err  { background: var(--danger); }
+
+    .spin {
+      display: inline-block; width: 12px; height: 12px;
+      border: 2px solid rgba(255,255,255,.35);
+      border-top-color: #fff; border-radius: 50%;
+      animation: sp .55s linear infinite; vertical-align: middle;
+    }
+    @keyframes sp { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+
+<!-- ── Login ────────────────────────────────────────────── -->
+<div id="login">
+  <div class="login-card">
+    <div class="login-logo">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M4 4h12M4 8h8M4 12h10M4 16h6"/></svg>
+    </div>
+    <h1>Blog Admin</h1>
+    <p>Enter a GitHub Personal Access Token with <strong>Contents: Read &amp; Write</strong> access to this repository.</p>
+    <div class="field">
+      <label for="pat-inp">Personal Access Token</label>
+      <input type="password" id="pat-inp" placeholder="ghp_…" autocomplete="off" autofocus>
+    </div>
+    <button class="btn btn-primary" id="login-btn">Sign in</button>
+    <div id="login-error"></div>
+  </div>
+</div>
+
+<!-- ── App ──────────────────────────────────────────────── -->
+<div id="app">
+  <div class="app-bar">
+    <span class="app-bar-brand">Blog Admin <span>· Min Cai</span></span>
+    <button class="btn btn-ghost" id="refresh-btn" title="Reload post list">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11.5 2A6 6 0 1 0 12 6.5"/><polyline points="8,2 11.5,2 11.5,5.5"/></svg>
+      Refresh
+    </button>
+    <button class="btn btn-ghost" id="logout-btn">Sign out</button>
+  </div>
+
+  <div class="app-body">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="sb-top">
+        <button class="btn-new" id="new-btn">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6.5" y1="1" x2="6.5" y2="12"/><line x1="1" y1="6.5" x2="12" y2="6.5"/></svg>
+          New Post
+        </button>
+      </div>
+      <div id="post-list"><div class="list-msg">Loading…</div></div>
+    </div>
+
+    <!-- Editor -->
+    <div class="editor-pane">
+      <div class="empty-state" id="no-post">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        Select a post or create a new one
+      </div>
+
+      <div id="has-post">
+        <div class="ed-toolbar">
+          <div class="meta-row">
+            <input id="m-title" type="text" placeholder="Post title" autocomplete="off">
+            <input id="m-date"  type="date">
+            <input id="m-tags"  type="text" placeholder="tags, comma-separated">
+          </div>
+          <div class="tab-grp">
+            <button class="tab-btn on" id="tb-split"   onclick="setTab('split')">Split</button>
+            <button class="tab-btn"    id="tb-write"   onclick="setTab('write')">Write</button>
+            <button class="tab-btn"    id="tb-preview" onclick="setTab('preview')">Preview</button>
+          </div>
+          <button class="btn btn-save" id="save-btn">Save</button>
+        </div>
+
+        <div class="ed-body">
+          <textarea id="md-area" placeholder="Write your post in Markdown…" spellcheck="true"></textarea>
+          <div id="preview"></div>
+        </div>
+
+        <div class="status-bar">
+          <span id="status-msg">Ready</span>
+          <span id="status-chars"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+/* ── Config ─────────────────────────────────────────────── */
+const OWNER = 'HenryCai11';
+const REPO  = 'HenryCai11.github.io';
+const DIR   = '_posts';
+
+/* ── State ──────────────────────────────────────────────── */
+let token   = '';
+let posts   = [];           // { name, path, sha, date, title }
+let cur     = null;         // { name, path, sha } of open file, or null
+let dirty   = false;
+
+/* ── GitHub API ─────────────────────────────────────────── */
+async function gh(method, path, body) {
+  const res = await fetch('https://api.github.com' + path, {
+    method,
+    headers: {
+      Authorization: 'token ' + token,
+      Accept: 'application/vnd.github.v3+json',
+      'Content-Type': 'application/json',
+    },
+    body: body ? JSON.stringify(body) : undefined,
+  });
+  if (!res.ok) {
+    const j = await res.json().catch(() => ({}));
+    throw new Error(j.message || res.statusText);
+  }
+  return res.status === 204 ? null : res.json();
+}
+
+function enc(s) { return btoa(unescape(encodeURIComponent(s))); }
+function dec(s) { return decodeURIComponent(escape(atob(s))); }
+
+/* ── Toast ──────────────────────────────────────────────── */
+let toastTmr;
+function toast(msg, isErr) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = 'show' + (isErr ? ' err' : '');
+  clearTimeout(toastTmr);
+  toastTmr = setTimeout(() => { el.className = ''; }, 2800);
+}
+
+/* ── Status bar ─────────────────────────────────────────── */
+function setStatus(msg) {
+  document.getElementById('status-msg').textContent = msg;
+}
+function updateCharCount() {
+  const n = document.getElementById('md-area').value.length;
+  document.getElementById('status-chars').textContent = n.toLocaleString() + ' chars';
+}
+
+/* ── Login ──────────────────────────────────────────────── */
+async function doLogin(pat) {
+  token = pat;
+  await gh('GET', `/repos/${OWNER}/${REPO}`);   // validates token + access
+  sessionStorage.setItem('blog_admin_token', pat);
+}
+
+document.getElementById('login-btn').addEventListener('click', async () => {
+  const pat   = document.getElementById('pat-inp').value.trim();
+  const btn   = document.getElementById('login-btn');
+  const errEl = document.getElementById('login-error');
+  if (!pat) return;
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spin"></span> Signing in…';
+  errEl.style.display = 'none';
+  try {
+    await doLogin(pat);
+    showApp();
+  } catch (e) {
+    errEl.textContent = 'Error: ' + e.message;
+    errEl.style.display = 'block';
+    token = '';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Sign in';
+  }
+});
+
+document.getElementById('pat-inp').addEventListener('keydown', e => {
+  if (e.key === 'Enter') document.getElementById('login-btn').click();
+});
+
+document.getElementById('logout-btn').addEventListener('click', () => {
+  sessionStorage.removeItem('blog_admin_token');
+  token = '';
+  document.getElementById('app').style.display   = 'none';
+  document.getElementById('login').style.display = 'flex';
+  document.getElementById('pat-inp').value = '';
+  posts = []; cur = null; dirty = false;
+});
+
+/* ── App init ────────────────────────────────────────────── */
+function showApp() {
+  document.getElementById('login').style.display = 'none';
+  document.getElementById('app').style.display   = 'flex';
+  loadPosts();
+}
+
+document.getElementById('refresh-btn').addEventListener('click', loadPosts);
+
+/* ── Load post list ─────────────────────────────────────── */
+async function loadPosts() {
+  const listEl = document.getElementById('post-list');
+  listEl.innerHTML = '<div class="list-msg">Loading…</div>';
+  try {
+    let files;
+    try {
+      files = await gh('GET', `/repos/${OWNER}/${REPO}/contents/${DIR}`);
+    } catch (e) {
+      if (e.message === 'Not Found') { files = []; }
+      else throw e;
+    }
+    posts = files
+      .filter(f => f.name.endsWith('.md'))
+      .map(f => {
+        const m = f.name.match(/^(\d{4}-\d{2}-\d{2})-(.+)\.md$/);
+        return {
+          name: f.name,
+          path: f.path,
+          sha:  f.sha,
+          date:  m ? m[1] : '',
+          slug:  m ? m[2].replace(/-/g, ' ') : f.name.replace(/\.md$/, ''),
+        };
+      })
+      .sort((a, b) => b.date.localeCompare(a.date));
+    renderList();
+  } catch (e) {
+    listEl.innerHTML = `<div class="list-msg" style="color:var(--danger)">Error: ${e.message}</div>`;
+  }
+}
+
+function renderList() {
+  const listEl = document.getElementById('post-list');
+  if (!posts.length) {
+    listEl.innerHTML = '<div class="list-msg">No posts yet.</div>';
+    return;
+  }
+  listEl.innerHTML = posts.map((p, i) => `
+    <div class="post-item${cur && cur.name === p.name ? ' active' : ''}" data-i="${i}"
+         onclick="openPost(${i})">
+      <div class="pi-info">
+        <div class="pi-title">${esc(p.slug)}</div>
+        <div class="pi-date">${p.date}</div>
+      </div>
+      <button class="pi-del" title="Delete" onclick="delPost(event,${i})">×</button>
+    </div>`).join('');
+}
+
+function esc(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+/* ── Open post ──────────────────────────────────────────── */
+async function openPost(i) {
+  if (dirty && !confirm('Discard unsaved changes?')) return;
+  const p = posts[i];
+  setStatus('Loading…');
+  try {
+    const data = await gh('GET', `/repos/${OWNER}/${REPO}/contents/${p.path}`);
+    cur = { name: p.name, path: p.path, sha: data.sha };
+    const raw = dec(data.content.replace(/\n/g, ''));
+    fillEditor(raw);
+    showEditor();
+    setActive(i);
+    setStatus('Loaded · ' + p.name);
+    dirty = false;
+  } catch (e) {
+    toast('Could not load: ' + e.message, true);
+    setStatus('Error');
+  }
+}
+
+/* ── New post ────────────────────────────────────────────── */
+document.getElementById('new-btn').addEventListener('click', () => {
+  if (dirty && !confirm('Discard unsaved changes?')) return;
+  cur = null;
+  dirty = false;
+  const today = new Date().toISOString().slice(0, 10);
+  document.getElementById('m-title').value = '';
+  document.getElementById('m-date').value  = today;
+  document.getElementById('m-tags').value  = '';
+  document.getElementById('md-area').value = '';
+  updatePreview();
+  updateCharCount();
+  setActive(-1);
+  showEditor();
+  setStatus('New post');
+  document.getElementById('m-title').focus();
+});
+
+/* ── Editor helpers ──────────────────────────────────────── */
+function showEditor() {
+  document.getElementById('no-post').style.display  = 'none';
+  document.getElementById('has-post').style.display = 'flex';
+}
+
+function setActive(i) {
+  document.querySelectorAll('.post-item').forEach(el => el.classList.remove('active'));
+  if (i >= 0) document.querySelector(`.post-item[data-i="${i}"]`)?.classList.add('active');
+}
+
+function fillEditor(raw) {
+  const { meta, body } = parseFM(raw);
+  document.getElementById('m-title').value = meta.title  || '';
+  document.getElementById('m-date').value  = meta.date   || '';
+  // tags: accept both "- tag" list and "[tag1, tag2]" inline
+  const tagsRaw = meta.tags || '';
+  const tagArr  = tagsRaw.startsWith('[')
+    ? tagsRaw.slice(1,-1).split(',').map(t => t.trim()).filter(Boolean)
+    : (meta._tagsArr || []);
+  document.getElementById('m-tags').value  = tagArr.join(', ');
+  document.getElementById('md-area').value = body.replace(/^\n+/, '');
+  updatePreview();
+  updateCharCount();
+}
+
+/* ── Front-matter parse / build ─────────────────────────── */
+function parseFM(raw) {
+  const m = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
+  if (!m) return { meta: {}, body: raw };
+  const meta = {};
+  let tagsArr = [], inTags = false;
+  m[1].split('\n').forEach(line => {
+    if (inTags) {
+      const ti = line.match(/^\s*-\s+(.+)/);
+      if (ti) { tagsArr.push(ti[1].trim()); return; }
+      inTags = false;
+    }
+    if (line.trim() === 'tags:') { inTags = true; return; }
+    const colon = line.indexOf(':');
+    if (colon < 0) return;
+    const k = line.slice(0, colon).trim();
+    const v = line.slice(colon + 1).trim().replace(/^["']|["']$/g, '');
+    meta[k] = v;
+  });
+  if (tagsArr.length) meta._tagsArr = tagsArr;
+  return { meta, body: m[2] };
+}
+
+function buildContent() {
+  const title = document.getElementById('m-title').value.trim();
+  const date  = document.getElementById('m-date').value.trim();
+  const tags  = document.getElementById('m-tags').value.trim();
+  const body  = document.getElementById('md-area').value;
+  const slug  = toSlug(title);
+  const perm  = `/posts/${date.slice(0,4)}/${date.slice(5,7)}/${slug}/`;
+
+  let fm = `---\ntitle: "${title}"\ndate: ${date}`;
+  if (tags) {
+    const tagList = tags.split(',').map(t => t.trim()).filter(Boolean);
+    fm += `\ntags:\n` + tagList.map(t => `  - ${t}`).join('\n');
+  }
+  fm += `\npermalink: ${perm}\n---\n\n${body}`;
+  return { fm, title, date, slug };
+}
+
+function toSlug(s) {
+  return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'untitled';
+}
+
+/* ── Save ────────────────────────────────────────────────── */
+document.getElementById('save-btn').addEventListener('click', savePost);
+
+document.addEventListener('keydown', e => {
+  if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+    e.preventDefault();
+    savePost();
+  }
+});
+
+async function savePost() {
+  const { fm, title, date, slug } = buildContent();
+  if (!title) { toast('Title is required', true); return; }
+  if (!date)  { toast('Date is required', true);  return; }
+
+  const filename  = `${date}-${slug}.md`;
+  const newPath   = `${DIR}/${filename}`;
+  const isSamePath = cur && cur.path === newPath;
+  const btn = document.getElementById('save-btn');
+
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spin"></span>';
+  setStatus('Saving…');
+
+  try {
+    const payload = {
+      message: (cur ? 'Update' : 'Add') + ' post: ' + title,
+      content: enc(fm),
+    };
+    if (isSamePath) payload.sha = cur.sha;   // update existing file
+
+    await gh('PUT', `/repos/${OWNER}/${REPO}/contents/${newPath}`, payload);
+
+    // If file was renamed, delete the old one
+    if (cur && !isSamePath) {
+      await gh('DELETE', `/repos/${OWNER}/${REPO}/contents/${cur.path}`, {
+        message: 'Remove old: ' + cur.name,
+        sha: cur.sha,
+      });
+    }
+
+    toast('Saved! GitHub Pages will rebuild in ~1 min.');
+    setStatus('Saved · ' + filename);
+    dirty = false;
+
+    // Refresh list and update cur sha
+    await loadPosts();
+    const fresh = await gh('GET', `/repos/${OWNER}/${REPO}/contents/${newPath}`);
+    cur = { name: filename, path: newPath, sha: fresh.sha };
+    const idx = posts.findIndex(p => p.name === filename);
+    if (idx >= 0) setActive(idx);
+  } catch (e) {
+    toast('Save failed: ' + e.message, true);
+    setStatus('Save failed');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Save';
+  }
+}
+
+/* ── Delete ──────────────────────────────────────────────── */
+async function delPost(ev, i) {
+  ev.stopPropagation();
+  const p = posts[i];
+  if (!confirm(`Delete "${p.slug}"?\nThis cannot be undone.`)) return;
+  try {
+    const data = await gh('GET', `/repos/${OWNER}/${REPO}/contents/${p.path}`);
+    await gh('DELETE', `/repos/${OWNER}/${REPO}/contents/${p.path}`, {
+      message: 'Delete post: ' + p.slug,
+      sha: data.sha,
+    });
+    if (cur?.path === p.path) {
+      document.getElementById('has-post').style.display = 'none';
+      document.getElementById('no-post').style.display  = 'flex';
+      cur = null; dirty = false;
+    }
+    toast('Deleted.');
+    await loadPosts();
+  } catch (e) {
+    toast('Delete failed: ' + e.message, true);
+  }
+}
+
+/* ── Markdown preview ────────────────────────────────────── */
+let prevTmr;
+document.getElementById('md-area').addEventListener('input', () => {
+  dirty = true;
+  clearTimeout(prevTmr);
+  prevTmr = setTimeout(updatePreview, 280);
+  updateCharCount();
+});
+
+function updatePreview() {
+  const md = document.getElementById('md-area').value;
+  document.getElementById('preview').innerHTML = marked.parse(md);
+}
+
+/* ── Tab switching ───────────────────────────────────────── */
+function setTab(tab) {
+  ['split','write','preview'].forEach(t => {
+    document.getElementById('tb-' + t).classList.toggle('on', t === tab);
+  });
+  const ed = document.getElementById('md-area');
+  const pr = document.getElementById('preview');
+  if (tab === 'split')   { ed.style.display = ''; pr.style.display = ''; }
+  if (tab === 'write')   { ed.style.display = ''; pr.style.display = 'none'; }
+  if (tab === 'preview') { ed.style.display = 'none'; pr.style.display = ''; updatePreview(); }
+}
+
+/* ── Title-change tracks dirty ──────────────────────────── */
+['m-title','m-date','m-tags'].forEach(id => {
+  document.getElementById(id).addEventListener('input', () => { dirty = true; });
+});
+
+/* ── Warn on close with unsaved changes ─────────────────── */
+window.addEventListener('beforeunload', e => {
+  if (dirty) { e.preventDefault(); e.returnValue = ''; }
+});
+
+/* ── Auto-login from sessionStorage ─────────────────────── */
+window.addEventListener('DOMContentLoaded', () => {
+  const saved = sessionStorage.getItem('blog_admin_token');
+  if (saved) {
+    token = saved;
+    showApp();
+  }
+});
+</script>
+</body>
+</html>
