@@ -1,0 +1,112 @@
+---
+layout: default
+---
+<div class="post-layout">
+  <article class="post-article">
+
+    <header class="post-header">
+      <div class="post-meta">
+        <time datetime="{{ page.date | date: '%Y-%m-%d' }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+        <div class="post-tags">
+          {% if page.status == "WIP" %}
+            <span class="tag tag-wip">🔒 WIP</span>
+          {% elsif page.status == "Open-sourced" %}
+            <span class="tag tag-open">Open-sourced</span>
+          {% endif %}
+          {% for tag in page.tags %}<span class="tag">{{ tag }}</span>{% endfor %}
+        </div>
+      </div>
+      <h1 class="post-title">{{ page.title }}</h1>
+      {% if page.summary %}<p class="project-summary">{{ page.summary }}</p>{% endif %}
+    </header>
+
+    {% if page.encrypted %}
+    <!-- ── Locked WIP project: content is AES-encrypted, decrypted in-browser ── -->
+    <div id="lock-gate" class="lock-gate">
+      <div class="lock-card">
+        <svg class="lock-icon" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <h2>This project is a work in progress</h2>
+        <p>Enter the passcode to view experiments, results, and notes.</p>
+        <form id="lock-form" autocomplete="off">
+          <input type="password" id="lock-pass" placeholder="Passcode" autocomplete="off" autofocus>
+          <button type="submit" class="lock-btn">Unlock</button>
+        </form>
+        <div id="lock-error" class="lock-error"></div>
+      </div>
+    </div>
+
+    <div id="project-content" class="post-content prose" style="display:none"></div>
+
+    <script type="application/json" id="enc-payload">{{ page.payload }}</script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@9/marked.min.js"></script>
+    <script>
+    (function () {
+      var STORE_KEY = 'proj_pass:' + location.pathname;
+
+      function b64ToBytes(s) {
+        return Uint8Array.from(atob(s), function (c) { return c.charCodeAt(0); });
+      }
+
+      async function decrypt(passcode) {
+        var raw = document.getElementById('enc-payload').textContent.trim();
+        var j = JSON.parse(atob(raw));
+        var salt = b64ToBytes(j.salt), iv = b64ToBytes(j.iv), ct = b64ToBytes(j.ct);
+        var km = await crypto.subtle.importKey(
+          'raw', new TextEncoder().encode(passcode), 'PBKDF2', false, ['deriveKey']);
+        var key = await crypto.subtle.deriveKey(
+          { name: 'PBKDF2', salt: salt, iterations: j.iter, hash: j.hash },
+          km, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
+        var pt = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: iv }, key, ct);
+        return new TextDecoder().decode(pt);
+      }
+
+      function reveal(markdown) {
+        var out = document.getElementById('project-content');
+        out.innerHTML = marked.parse(markdown);
+        out.style.display = '';
+        document.getElementById('lock-gate').style.display = 'none';
+      }
+
+      async function tryPass(passcode, remember) {
+        var md = await decrypt(passcode); // throws on wrong passcode (GCM auth fail)
+        if (remember) { try { sessionStorage.setItem(STORE_KEY, passcode); } catch (e) {} }
+        reveal(md);
+      }
+
+      document.getElementById('lock-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var err = document.getElementById('lock-error');
+        var pass = document.getElementById('lock-pass').value;
+        err.textContent = '';
+        tryPass(pass, true).catch(function () {
+          err.textContent = 'Incorrect passcode.';
+          document.getElementById('lock-pass').value = '';
+          document.getElementById('lock-pass').focus();
+        });
+      });
+
+      // Auto-unlock if a valid passcode was used earlier this session.
+      window.addEventListener('load', function () {
+        var saved = null;
+        try { saved = sessionStorage.getItem(STORE_KEY); } catch (e) {}
+        if (saved) {
+          tryPass(saved, false).catch(function () {
+            try { sessionStorage.removeItem(STORE_KEY); } catch (e) {}
+          });
+        }
+      });
+    })();
+    </script>
+    {% else %}
+    <!-- ── Open-sourced project: full access ── -->
+    <div class="post-content prose">
+      {{ content }}
+    </div>
+    {% endif %}
+
+    <footer class="post-footer">
+      <a href="/projects/" class="back-link">← All projects</a>
+    </footer>
+
+  </article>
+</div>

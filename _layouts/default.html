@@ -81,6 +81,7 @@
     <nav class="site-nav" id="siteNav">
       <a href="/" class="nav-link{% if page.url == '/' or page.url == '/about/' or page.url == '/about.html' %} active{% endif %}">About</a>
       <a href="/blog/" class="nav-link{% if page.url contains '/blog' or page.url contains '/posts' %} active{% endif %}">Blog</a>
+      <a href="/projects/" class="nav-link{% if page.url contains '/projects' %} active{% endif %}">Project</a>
       <a href="/files/CV_Min.pdf" class="nav-link" target="_blank" rel="noopener">CV&nbsp;↗</a>
     </nav>
     <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">

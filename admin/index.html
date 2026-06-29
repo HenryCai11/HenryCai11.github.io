@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex,nofollow">
-  <title>Blog Admin — Min Cai</title>
+  <title>Content Admin — Min Cai</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
@@ -101,6 +101,15 @@
     .btn-save     { background: var(--accent); color: #fff; padding: .38rem .9rem; font-size: .8rem; }
     .btn-save:not(:disabled):hover { background: var(--accent-h); }
 
+    /* ── Segmented control ────────────────────────────────── */
+    .seg { display: inline-flex; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 2px; }
+    .seg button {
+      padding: .3rem .8rem; border: none; background: transparent;
+      font-family: inherit; font-size: .78rem; font-weight: 500;
+      color: var(--text-muted); cursor: pointer; border-radius: 6px; transition: all .12s;
+    }
+    .seg button.on { background: var(--surface); color: var(--text); box-shadow: 0 1px 2px rgba(0,0,0,.06); }
+
     /* ── App shell ────────────────────────────────────────── */
     #app { flex: 1; display: none; flex-direction: column; overflow: hidden; }
 
@@ -110,8 +119,9 @@
       border-bottom: 1px solid var(--border);
       display: flex; align-items: center; padding: 0 1rem; gap: .75rem;
     }
-    .app-bar-brand { font-size: .875rem; font-weight: 600; flex: 1; }
+    .app-bar-brand { font-size: .875rem; font-weight: 600; }
     .app-bar-brand span { color: var(--text-muted); font-weight: 400; }
+    .app-bar-spacer { flex: 1; }
 
     .app-body { display: flex; flex: 1; overflow: hidden; }
 
@@ -151,8 +161,12 @@
     .pi-title {
       font-size: .8rem; font-weight: 500;
       white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      display: flex; align-items: center; gap: .35rem;
     }
     .pi-date { font-size: .7rem; color: var(--text-muted); margin-top: 1px; }
+    .pi-badge { font-size: .62rem; font-weight: 600; padding: 1px 5px; border-radius: 999px; flex-shrink: 0; }
+    .pi-badge.wip  { color: var(--accent-h); background: var(--accent-soft); }
+    .pi-badge.open { color: #2F7D4F; background: #E7F2EC; }
 
     .pi-del {
       opacity: 0; flex-shrink: 0;
@@ -185,17 +199,28 @@
       display: flex; align-items: center; gap: .6rem;
     }
     .meta-row { display: flex; gap: .45rem; flex: 1; align-items: center; min-width: 0; }
-    .meta-row input {
+    .meta-row input, .meta-row select {
       border: 1px solid var(--border); border-radius: 6px;
       padding: .3rem .6rem;
       font-family: inherit; font-size: .82rem;
       background: var(--bg); color: var(--text); outline: none;
       transition: border-color .15s;
     }
-    .meta-row input:focus { border-color: var(--accent); }
+    .meta-row input:focus, .meta-row select:focus { border-color: var(--accent); }
     #m-title { flex: 2; min-width: 0; }
     #m-date  { width: 130px; flex-shrink: 0; }
     #m-tags  { flex: 1; min-width: 0; }
+    #m-status { flex-shrink: 0; }
+    #m-pass  { width: 150px; flex-shrink: 0; }
+
+    /* Second toolbar row (projects: public summary) */
+    .proj-row { display: none; padding: .5rem .85rem; border-bottom: 1px solid var(--border); background: var(--surface); flex-shrink: 0; }
+    .proj-row input {
+      width: 100%; border: 1px solid var(--border); border-radius: 6px;
+      padding: .35rem .6rem; font-family: inherit; font-size: .82rem;
+      background: var(--bg); color: var(--text); outline: none; transition: border-color .15s;
+    }
+    .proj-row input:focus { border-color: var(--accent); }
 
     .tab-grp { display: flex; gap: 2px; flex-shrink: 0; }
     .tab-btn {
@@ -236,6 +261,8 @@
     #preview blockquote { border-left:3px solid var(--border); padding-left:1rem; color:var(--text-muted); margin-bottom:.9em; }
     #preview hr { border:none; border-top:1px solid var(--border); margin:1.5em 0; }
     #preview img { max-width:100%; border-radius:6px; }
+    #preview table { border-collapse: collapse; margin-bottom: .9em; }
+    #preview th,#preview td { border: 1px solid var(--border); padding: .3em .6em; }
 
     /* ── Status bar ───────────────────────────────────────── */
     .status-bar {
@@ -246,7 +273,6 @@
       gap: .5rem; font-size: .72rem; color: var(--text-muted);
     }
     #status-msg { flex: 1; }
-    #status-chars { }
 
     /* ── Toast ────────────────────────────────────────────── */
     #toast {
@@ -277,7 +303,7 @@
     <div class="login-logo">
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M4 4h12M4 8h8M4 12h10M4 16h6"/></svg>
     </div>
-    <h1>Blog Admin</h1>
+    <h1>Content Admin</h1>
     <p>Enter a GitHub Personal Access Token with <strong>Contents: Read &amp; Write</strong> access to this repository.</p>
     <div class="field">
       <label for="pat-inp">Personal Access Token</label>
@@ -291,8 +317,13 @@
 <!-- ── App ──────────────────────────────────────────────── -->
 <div id="app">
   <div class="app-bar">
-    <span class="app-bar-brand">Blog Admin <span>· Min Cai</span></span>
-    <button class="btn btn-ghost" id="refresh-btn" title="Reload post list">
+    <span class="app-bar-brand">Content Admin <span>· Min Cai</span></span>
+    <div class="seg" id="mode-seg">
+      <button data-mode="posts" class="on">Blog</button>
+      <button data-mode="projects">Projects</button>
+    </div>
+    <div class="app-bar-spacer"></div>
+    <button class="btn btn-ghost" id="refresh-btn" title="Reload list">
       <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11.5 2A6 6 0 1 0 12 6.5"/><polyline points="8,2 11.5,2 11.5,5.5"/></svg>
       Refresh
     </button>
@@ -305,7 +336,7 @@
       <div class="sb-top">
         <button class="btn-new" id="new-btn">
           <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6.5" y1="1" x2="6.5" y2="12"/><line x1="1" y1="6.5" x2="12" y2="6.5"/></svg>
-          New Post
+          <span id="new-label">New Post</span>
         </button>
       </div>
       <div id="post-list"><div class="list-msg">Loading…</div></div>
@@ -315,15 +346,20 @@
     <div class="editor-pane">
       <div class="empty-state" id="no-post">
         <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-        Select a post or create a new one
+        Select an entry or create a new one
       </div>
 
       <div id="has-post">
         <div class="ed-toolbar">
           <div class="meta-row">
-            <input id="m-title" type="text" placeholder="Post title" autocomplete="off">
+            <input id="m-title" type="text" placeholder="Title" autocomplete="off">
             <input id="m-date"  type="date">
             <input id="m-tags"  type="text" placeholder="tags, comma-separated">
+            <select id="m-status">
+              <option value="Open-sourced">Open-sourced</option>
+              <option value="WIP">WIP</option>
+            </select>
+            <input id="m-pass" type="text" placeholder="Passcode (WIP)" autocomplete="off">
           </div>
           <div class="tab-grp">
             <button class="tab-btn on" id="tb-split"   onclick="setTab('split')">Split</button>
@@ -333,8 +369,12 @@
           <button class="btn btn-save" id="save-btn">Save</button>
         </div>
 
+        <div class="proj-row" id="proj-row">
+          <input id="m-summary" type="text" placeholder="Short public summary (shown on the Projects list, visible without the passcode)" autocomplete="off">
+        </div>
+
         <div class="ed-body">
-          <textarea id="md-area" placeholder="Write your post in Markdown…" spellcheck="true"></textarea>
+          <textarea id="md-area" placeholder="Write in Markdown…" spellcheck="true"></textarea>
           <div id="preview"></div>
         </div>
 
@@ -353,13 +393,15 @@
 /* ── Config ─────────────────────────────────────────────── */
 const OWNER = 'HenryCai11';
 const REPO  = 'HenryCai11.github.io';
-const DIR   = '_posts';
+const DIRS  = { posts: '_posts', projects: '_projects' };
+const PBKDF2_ITER = 200000;
 
 /* ── State ──────────────────────────────────────────────── */
-let token   = '';
-let posts   = [];           // { name, path, sha, date, title }
-let cur     = null;         // { name, path, sha } of open file, or null
-let dirty   = false;
+let token = '';
+let mode  = 'posts';        // 'posts' | 'projects'
+let posts = [];             // list items for the current mode
+let cur   = null;           // { name, path, sha } of open file, or null
+let dirty = false;
 
 /* ── GitHub API ─────────────────────────────────────────── */
 async function gh(method, path, body) {
@@ -382,7 +424,39 @@ async function gh(method, path, body) {
 function enc(s) { return btoa(unescape(encodeURIComponent(s))); }
 function dec(s) { return decodeURIComponent(escape(atob(s))); }
 
-/* ── Toast ──────────────────────────────────────────────── */
+/* ── Crypto (matches _layouts/project.html) ─────────────── */
+function bytesToB64(u8) { let s = ''; for (let i = 0; i < u8.length; i++) s += String.fromCharCode(u8[i]); return btoa(s); }
+function b64ToBytes(s)  { return Uint8Array.from(atob(s), c => c.charCodeAt(0)); }
+
+async function deriveKey(passcode, salt, usages) {
+  const km = await crypto.subtle.importKey('raw', new TextEncoder().encode(passcode), 'PBKDF2', false, ['deriveKey']);
+  return crypto.subtle.deriveKey(
+    { name: 'PBKDF2', salt: salt, iterations: PBKDF2_ITER, hash: 'SHA-256' },
+    km, { name: 'AES-GCM', length: 256 }, false, usages);
+}
+
+async function encryptContent(text, passcode) {
+  const salt = crypto.getRandomValues(new Uint8Array(16));
+  const iv   = crypto.getRandomValues(new Uint8Array(12));
+  const key  = await deriveKey(passcode, salt, ['encrypt']);
+  const ct   = new Uint8Array(await crypto.subtle.encrypt(
+    { name: 'AES-GCM', iv: iv }, key, new TextEncoder().encode(text)));
+  const json = JSON.stringify({
+    v: 1, kdf: 'PBKDF2', iter: PBKDF2_ITER, hash: 'SHA-256',
+    salt: bytesToB64(salt), iv: bytesToB64(iv), ct: bytesToB64(ct),
+  });
+  return btoa(json);  // base64(JSON) — layout reads JSON.parse(atob(payload))
+}
+
+async function decryptContent(payloadB64, passcode) {
+  const j = JSON.parse(atob(payloadB64));
+  const key = await deriveKey(passcode, b64ToBytes(j.salt), ['decrypt']);
+  const pt = await crypto.subtle.decrypt(
+    { name: 'AES-GCM', iv: b64ToBytes(j.iv) }, key, b64ToBytes(j.ct));
+  return new TextDecoder().decode(pt);
+}
+
+/* ── Toast / status ─────────────────────────────────────── */
 let toastTmr;
 function toast(msg, isErr) {
   const el = document.getElementById('toast');
@@ -391,11 +465,7 @@ function toast(msg, isErr) {
   clearTimeout(toastTmr);
   toastTmr = setTimeout(() => { el.className = ''; }, 2800);
 }
-
-/* ── Status bar ─────────────────────────────────────────── */
-function setStatus(msg) {
-  document.getElementById('status-msg').textContent = msg;
-}
+function setStatus(msg) { document.getElementById('status-msg').textContent = msg; }
 function updateCharCount() {
   const n = document.getElementById('md-area').value.length;
   document.getElementById('status-chars').textContent = n.toLocaleString() + ' chars';
@@ -404,7 +474,7 @@ function updateCharCount() {
 /* ── Login ──────────────────────────────────────────────── */
 async function doLogin(pat) {
   token = pat;
-  await gh('GET', `/repos/${OWNER}/${REPO}`);   // validates token + access
+  await gh('GET', `/repos/${OWNER}/${REPO}`);
   sessionStorage.setItem('blog_admin_token', pat);
 }
 
@@ -446,15 +516,48 @@ document.getElementById('logout-btn').addEventListener('click', () => {
 function showApp() {
   document.getElementById('login').style.display = 'none';
   document.getElementById('app').style.display   = 'flex';
+  applyMode();
   loadPosts();
 }
 
 document.getElementById('refresh-btn').addEventListener('click', loadPosts);
 
-/* ── Load post list ─────────────────────────────────────── */
+/* ── Mode switching ─────────────────────────────────────── */
+document.getElementById('mode-seg').addEventListener('click', e => {
+  const b = e.target.closest('button[data-mode]');
+  if (!b || b.dataset.mode === mode) return;
+  if (dirty && !confirm('Discard unsaved changes?')) return;
+  mode = b.dataset.mode;
+  document.querySelectorAll('#mode-seg button').forEach(x => x.classList.toggle('on', x.dataset.mode === mode));
+  cur = null; dirty = false;
+  document.getElementById('has-post').style.display = 'none';
+  document.getElementById('no-post').style.display  = 'flex';
+  applyMode();
+  loadPosts();
+});
+
+function applyMode() {
+  const isProj = mode === 'projects';
+  document.getElementById('new-label').textContent = isProj ? 'New Project' : 'New Post';
+  document.getElementById('m-tags').style.display    = isProj ? 'none' : '';
+  document.getElementById('m-status').style.display  = isProj ? '' : 'none';
+  document.getElementById('proj-row').style.display  = isProj ? 'block' : 'none';
+  applyStatusVisibility();
+}
+
+function applyStatusVisibility() {
+  const isProj = mode === 'projects';
+  const wip = document.getElementById('m-status').value === 'WIP';
+  document.getElementById('m-pass').style.display = (isProj && wip) ? '' : 'none';
+}
+
+document.getElementById('m-status').addEventListener('change', () => { applyStatusVisibility(); dirty = true; });
+
+/* ── Load list ──────────────────────────────────────────── */
 async function loadPosts() {
   const listEl = document.getElementById('post-list');
   listEl.innerHTML = '<div class="list-msg">Loading…</div>';
+  const DIR = DIRS[mode];
   try {
     let files;
     try {
@@ -463,19 +566,18 @@ async function loadPosts() {
       if (e.message === 'Not Found') { files = []; }
       else throw e;
     }
-    posts = files
-      .filter(f => f.name.endsWith('.md'))
-      .map(f => {
+    if (mode === 'posts') {
+      posts = files.filter(f => f.name.endsWith('.md')).map(f => {
         const m = f.name.match(/^(\d{4}-\d{2}-\d{2})-(.+)\.md$/);
-        return {
-          name: f.name,
-          path: f.path,
-          sha:  f.sha,
-          date:  m ? m[1] : '',
-          slug:  m ? m[2].replace(/-/g, ' ') : f.name.replace(/\.md$/, ''),
-        };
-      })
-      .sort((a, b) => b.date.localeCompare(a.date));
+        return { name: f.name, path: f.path, sha: f.sha,
+          date: m ? m[1] : '', slug: m ? m[2].replace(/-/g, ' ') : f.name.replace(/\.md$/, '') };
+      }).sort((a, b) => b.date.localeCompare(a.date));
+    } else {
+      posts = files.filter(f => f.name.endsWith('.md')).map(f => ({
+        name: f.name, path: f.path, sha: f.sha, date: '',
+        slug: f.name.replace(/\.md$/, '').replace(/-/g, ' '),
+      })).sort((a, b) => a.slug.localeCompare(b.slug));
+    }
     renderList();
   } catch (e) {
     listEl.innerHTML = `<div class="list-msg" style="color:var(--danger)">Error: ${e.message}</div>`;
@@ -485,7 +587,7 @@ async function loadPosts() {
 function renderList() {
   const listEl = document.getElementById('post-list');
   if (!posts.length) {
-    listEl.innerHTML = '<div class="list-msg">No posts yet.</div>';
+    listEl.innerHTML = `<div class="list-msg">No ${mode === 'projects' ? 'projects' : 'posts'} yet.</div>`;
     return;
   }
   listEl.innerHTML = posts.map((p, i) => `
@@ -493,7 +595,7 @@ function renderList() {
          onclick="openPost(${i})">
       <div class="pi-info">
         <div class="pi-title">${esc(p.slug)}</div>
-        <div class="pi-date">${p.date}</div>
+        ${p.date ? `<div class="pi-date">${p.date}</div>` : ''}
       </div>
       <button class="pi-del" title="Delete" onclick="delPost(event,${i})">×</button>
     </div>`).join('');
@@ -503,16 +605,21 @@ function esc(s) {
   return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
 
-/* ── Open post ──────────────────────────────────────────── */
+/* ── Open entry ─────────────────────────────────────────── */
 async function openPost(i) {
   if (dirty && !confirm('Discard unsaved changes?')) return;
   const p = posts[i];
   setStatus('Loading…');
   try {
     const data = await gh('GET', `/repos/${OWNER}/${REPO}/contents/${p.path}`);
-    cur = { name: p.name, path: p.path, sha: data.sha };
     const raw = dec(data.content.replace(/\n/g, ''));
-    fillEditor(raw);
+    if (mode === 'projects') {
+      const ok = await fillProject(raw);
+      if (!ok) { setStatus('Cancelled'); return; }
+    } else {
+      fillEditor(raw);
+    }
+    cur = { name: p.name, path: p.path, sha: data.sha };
     showEditor();
     setActive(i);
     setStatus('Loaded · ' + p.name);
@@ -523,7 +630,7 @@ async function openPost(i) {
   }
 }
 
-/* ── New post ────────────────────────────────────────────── */
+/* ── New entry ──────────────────────────────────────────── */
 document.getElementById('new-btn').addEventListener('click', () => {
   if (dirty && !confirm('Discard unsaved changes?')) return;
   cur = null;
@@ -532,12 +639,16 @@ document.getElementById('new-btn').addEventListener('click', () => {
   document.getElementById('m-title').value = '';
   document.getElementById('m-date').value  = today;
   document.getElementById('m-tags').value  = '';
+  document.getElementById('m-summary').value = '';
+  document.getElementById('m-pass').value  = '';
+  document.getElementById('m-status').value = 'Open-sourced';
   document.getElementById('md-area').value = '';
+  applyStatusVisibility();
   updatePreview();
   updateCharCount();
   setActive(-1);
   showEditor();
-  setStatus('New post');
+  setStatus(mode === 'projects' ? 'New project' : 'New post');
   document.getElementById('m-title').focus();
 });
 
@@ -556,7 +667,6 @@ function fillEditor(raw) {
   const { meta, body } = parseFM(raw);
   document.getElementById('m-title').value = meta.title  || '';
   document.getElementById('m-date').value  = meta.date   || '';
-  // tags: accept both "- tag" list and "[tag1, tag2]" inline
   const tagsRaw = meta.tags || '';
   const tagArr  = tagsRaw.startsWith('[')
     ? tagsRaw.slice(1,-1).split(',').map(t => t.trim()).filter(Boolean)
@@ -567,7 +677,34 @@ function fillEditor(raw) {
   updateCharCount();
 }
 
-/* ── Front-matter parse / build ─────────────────────────── */
+async function fillProject(raw) {
+  const { meta, body } = parseFM(raw);
+  const isEnc = meta.encrypted === 'true' || meta.encrypted === true;
+  let md = body.replace(/^\n+/, '');
+  let pass = '';
+  if (isEnc) {
+    pass = prompt('Enter the passcode to decrypt and edit this WIP project:');
+    if (pass == null) return false;
+    try {
+      md = await decryptContent(meta.payload, pass);
+    } catch (e) {
+      toast('Wrong passcode — cannot decrypt.', true);
+      return false;
+    }
+  }
+  document.getElementById('m-title').value   = meta.title || '';
+  document.getElementById('m-date').value    = meta.date  || '';
+  document.getElementById('m-summary').value = meta.summary || '';
+  document.getElementById('m-status').value  = isEnc ? 'WIP' : (meta.status || 'Open-sourced');
+  document.getElementById('m-pass').value    = pass;
+  document.getElementById('md-area').value   = md;
+  applyStatusVisibility();
+  updatePreview();
+  updateCharCount();
+  return true;
+}
+
+/* ── Front-matter parse ─────────────────────────────────── */
 function parseFM(raw) {
   const m = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
   if (!m) return { meta: {}, body: raw };
@@ -590,65 +727,80 @@ function parseFM(raw) {
   return { meta, body: m[2] };
 }
 
-function buildContent() {
+/* ── Build file content ─────────────────────────────────── */
+function yamlStr(s) { return '"' + String(s).replace(/\\/g, '\\\\').replace(/"/g, '\\"') + '"'; }
+function toSlug(s) { return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'untitled'; }
+
+async function buildContent() {
   const title = document.getElementById('m-title').value.trim();
   const date  = document.getElementById('m-date').value.trim();
-  const tags  = document.getElementById('m-tags').value.trim();
   const body  = document.getElementById('md-area').value;
   const slug  = toSlug(title);
-  const perm  = `/posts/${date.slice(0,4)}/${date.slice(5,7)}/${slug}/`;
 
-  let fm = `---\ntitle: "${title}"\ndate: ${date}`;
+  if (mode === 'projects') {
+    const status  = document.getElementById('m-status').value;
+    const summary = document.getElementById('m-summary').value.trim();
+    let fm = `---\ntitle: ${yamlStr(title)}\ndate: ${date}\nstatus: ${status}`;
+    if (status === 'WIP') {
+      const pass = document.getElementById('m-pass').value;
+      if (!pass) throw new Error('Passcode is required for a WIP project');
+      const payload = await encryptContent(body, pass);
+      fm += `\nencrypted: true`;
+      if (summary) fm += `\nsummary: ${yamlStr(summary)}`;
+      fm += `\npayload: ${payload}\n---\n`;
+    } else {
+      if (summary) fm += `\nsummary: ${yamlStr(summary)}`;
+      fm += `\n---\n\n${body}`;
+    }
+    return { fm, title, date, slug, filename: `${slug}.md` };
+  }
+
+  // posts
+  const tags = document.getElementById('m-tags').value.trim();
+  const perm = `/posts/${date.slice(0,4)}/${date.slice(5,7)}/${slug}/`;
+  let fm = `---\ntitle: ${yamlStr(title)}\ndate: ${date}`;
   if (tags) {
     const tagList = tags.split(',').map(t => t.trim()).filter(Boolean);
     fm += `\ntags:\n` + tagList.map(t => `  - ${t}`).join('\n');
   }
   fm += `\npermalink: ${perm}\n---\n\n${body}`;
-  return { fm, title, date, slug };
-}
-
-function toSlug(s) {
-  return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'untitled';
+  return { fm, title, date, slug, filename: `${date}-${slug}.md` };
 }
 
 /* ── Save ────────────────────────────────────────────────── */
 document.getElementById('save-btn').addEventListener('click', savePost);
-
 document.addEventListener('keydown', e => {
-  if ((e.ctrlKey || e.metaKey) && e.key === 's') {
-    e.preventDefault();
-    savePost();
-  }
+  if ((e.ctrlKey || e.metaKey) && e.key === 's') { e.preventDefault(); savePost(); }
 });
 
 async function savePost() {
-  const { fm, title, date, slug } = buildContent();
+  const btn = document.getElementById('save-btn');
+  let built;
+  try {
+    built = await buildContent();
+  } catch (e) { toast(e.message, true); return; }
+  const { fm, title, date, filename } = built;
   if (!title) { toast('Title is required', true); return; }
   if (!date)  { toast('Date is required', true);  return; }
 
-  const filename  = `${date}-${slug}.md`;
-  const newPath   = `${DIR}/${filename}`;
+  const DIR = DIRS[mode];
+  const newPath = `${DIR}/${filename}`;
   const isSamePath = cur && cur.path === newPath;
-  const btn = document.getElementById('save-btn');
 
   btn.disabled = true;
   btn.innerHTML = '<span class="spin"></span>';
   setStatus('Saving…');
 
   try {
-    const payload = {
-      message: (cur ? 'Update' : 'Add') + ' post: ' + title,
-      content: enc(fm),
-    };
-    if (isSamePath) payload.sha = cur.sha;   // update existing file
+    const label = mode === 'projects' ? 'project' : 'post';
+    const payload = { message: (cur ? 'Update' : 'Add') + ' ' + label + ': ' + title, content: enc(fm) };
+    if (isSamePath) payload.sha = cur.sha;
 
     await gh('PUT', `/repos/${OWNER}/${REPO}/contents/${newPath}`, payload);
 
-    // If file was renamed, delete the old one
     if (cur && !isSamePath) {
       await gh('DELETE', `/repos/${OWNER}/${REPO}/contents/${cur.path}`, {
-        message: 'Remove old: ' + cur.name,
-        sha: cur.sha,
+        message: 'Remove old: ' + cur.name, sha: cur.sha,
       });
     }
 
@@ -656,7 +808,6 @@ async function savePost() {
     setStatus('Saved · ' + filename);
     dirty = false;
 
-    // Refresh list and update cur sha
     await loadPosts();
     const fresh = await gh('GET', `/repos/${OWNER}/${REPO}/contents/${newPath}`);
     cur = { name: filename, path: newPath, sha: fresh.sha };
@@ -679,8 +830,7 @@ async function delPost(ev, i) {
   try {
     const data = await gh('GET', `/repos/${OWNER}/${REPO}/contents/${p.path}`);
     await gh('DELETE', `/repos/${OWNER}/${REPO}/contents/${p.path}`, {
-      message: 'Delete post: ' + p.slug,
-      sha: data.sha,
+      message: 'Delete: ' + p.slug, sha: data.sha,
     });
     if (cur?.path === p.path) {
       document.getElementById('has-post').style.display = 'none';
@@ -702,13 +852,11 @@ document.getElementById('md-area').addEventListener('input', () => {
   prevTmr = setTimeout(updatePreview, 280);
   updateCharCount();
 });
-
 function updatePreview() {
-  const md = document.getElementById('md-area').value;
-  document.getElementById('preview').innerHTML = marked.parse(md);
+  document.getElementById('preview').innerHTML = marked.parse(document.getElementById('md-area').value);
 }
 
-/* ── Tab switching ───────────────────────────────────────── */
+/* ── Tabs ────────────────────────────────────────────────── */
 function setTab(tab) {
   ['split','write','preview'].forEach(t => {
     document.getElementById('tb-' + t).classList.toggle('on', t === tab);
@@ -720,23 +868,16 @@ function setTab(tab) {
   if (tab === 'preview') { ed.style.display = 'none'; pr.style.display = ''; updatePreview(); }
 }
 
-/* ── Title-change tracks dirty ──────────────────────────── */
-['m-title','m-date','m-tags'].forEach(id => {
+['m-title','m-date','m-tags','m-summary','m-pass'].forEach(id => {
   document.getElementById(id).addEventListener('input', () => { dirty = true; });
 });
 
-/* ── Warn on close with unsaved changes ─────────────────── */
-window.addEventListener('beforeunload', e => {
-  if (dirty) { e.preventDefault(); e.returnValue = ''; }
-});
+window.addEventListener('beforeunload', e => { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
 
-/* ── Auto-login from sessionStorage ─────────────────────── */
+/* ── Auto-login ─────────────────────────────────────────── */
 window.addEventListener('DOMContentLoaded', () => {
   const saved = sessionStorage.getItem('blog_admin_token');
-  if (saved) {
-    token = saved;
-    showApp();
-  }
+  if (saved) { token = saved; showApp(); }
 });
 </script>
 </body>

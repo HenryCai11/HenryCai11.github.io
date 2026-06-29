@@ -187,6 +187,9 @@ collections:
   talks:
     output: true
     permalink: /:collection/:path/
+  projects:
+    output: true
+    permalink: /projects/:path/
 
 
 # Defaults
@@ -221,6 +224,11 @@ defaults:
       type: talks
     values:
       layout: page
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: project
 
 # Sass/SCSS
 sass:
