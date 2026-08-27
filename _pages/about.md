@@ -41,6 +41,19 @@ I have broad interests in ML and NLP, particularly in understanding the mechanis
   </div>
 </div>
 
+# Experience
+
+<div class="news-list">
+  <div class="news-item">
+    <span class="news-date">Oct 2025 – Mar 2026</span>
+    <span class="news-text">Research Intern, <strong>Baidu</strong>.</span>
+  </div>
+  <div class="news-item">
+    <span class="news-date">Aug 2024 – Jul 2025</span>
+    <span class="news-text">Research Intern, <strong>Z.ai</strong>.</span>
+  </div>
+</div>
+
 # Research
 
 <div class="paper-forest">
