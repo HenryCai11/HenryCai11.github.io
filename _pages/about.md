@@ -7,14 +7,9 @@ redirect_from:
   - /about.html
 ---
 
-Hi, I'm **Min Cai (蔡旻)**. I'm an incoming PhD student at the University of Alberta, supervised by <a href="https://xiye17.github.io">Dr. Xi Ye</a>. Previously, I was an M.S. student graduated from Shenzhen University, where I was supervised by <a href="https://hdzhangust.github.io">Prof. Haodi Zhang</a>. Before that, I obtained my B.A. in Translation from Beijing Language and Culture University. I also work closely with <a href="https://zhangdan0602.github.io">Dr. Dan Zhang</a>, <a href="https://acbull.github.io">Dr. Ziniu Hu</a>, <a href="https://shichangzh.github.io">Dr. Shichang Zhang</a>, and <a href="https://difanzou.github.io">Dr. Difan Zou</a>.
+Hi, I'm **Min Cai (蔡旻)**. I'm a PhD student at the University of Alberta, supervised by <a href="https://xiye17.github.io">Dr. Xi Ye</a>. Previously, I was an M.S. student graduated from Shenzhen University, where I was supervised by <a href="https://hdzhangust.github.io">Prof. Haodi Zhang</a>. Before that, I obtained my B.A. in Translation from Beijing Language and Culture University. I also work closely with <a href="https://zhangdan0602.github.io">Dr. Dan Zhang</a>, <a href="https://acbull.github.io">Dr. Ziniu Hu</a>, <a href="https://shichangzh.github.io">Dr. Shichang Zhang</a>, and <a href="https://difanzou.github.io">Dr. Difan Zou</a>.
 
 I have broad interests in ML and NLP, particularly in understanding the mechanisms behind neural language models, developing LLM agents capable of solving complex problems, and enhancing LLM reasoning. **My current focus is on teaching LLMs to continually learn** (e.g., <a href="https://arxiv.org/abs/2602.02301">MGS</a> for resolving gradient conflicts and mitigating interference when learning across domains) — stay tuned for more work coming soon!
-
-**Research areas:**
-- **Interpreting and controlling LLM behaviors** — mechanistic understanding for better alignment with human values (e.g., <a href="https://llm-self-control.github.io">SelfControl</a>)
-- **LLM Agents** — solving complex tasks via multi-agent games and strategic planning (e.g., <a href="https://avalonbench.github.io">AvalonBench</a>)
-- **LLM Reasoning** — inference-time algorithms such as Monte Carlo tree search and representation engineering (e.g., <a href="https://llm-strategist.github.io">Strategist</a>)
 
 # News
 
