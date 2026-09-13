@@ -140,7 +140,7 @@ I have broad interests in ML and NLP, particularly in understanding the mechanis
           <a class="ptree-leaf-title" href="https://arxiv.org/abs/2602.02301" target="_blank" rel="noopener">Advancing General-Purpose Reasoning Models with Modular Gradient Surgery</a>
         </div>
         <div class="ptree-leaf">
-          <span class="ptree-leaf-venue">arXiv 2026</span>
+          <span class="ptree-leaf-venue">EMNLP 2026</span>
           <a class="ptree-leaf-title" href="https://arxiv.org/abs/2606.16360" target="_blank" rel="noopener">Tyler: Typed Latent Reasoning for Language Models — When to Think, What to Compute, and How Much to Allocate</a>
         </div>
       </div>
