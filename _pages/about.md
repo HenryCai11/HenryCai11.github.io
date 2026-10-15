@@ -9,11 +9,15 @@ redirect_from:
 
 Hi, I'm **Min Cai (蔡旻)**. I'm a PhD student at the University of Alberta, supervised by <a href="https://xiye17.github.io">Dr. Xi Ye</a>. Previously, I was an M.S. student graduated from Shenzhen University, where I was supervised by <a href="https://hdzhangust.github.io">Prof. Haodi Zhang</a>. Before that, I obtained my B.A. in Translation from Beijing Language and Culture University. I also work closely with <a href="https://zhangdan0602.github.io">Dr. Dan Zhang</a>, <a href="https://acbull.github.io">Dr. Ziniu Hu</a>, <a href="https://shichangzh.github.io">Dr. Shichang Zhang</a>, and <a href="https://difanzou.github.io">Dr. Difan Zou</a>.
 
-I have broad interests in ML and NLP, particularly in understanding the mechanisms behind neural language models, developing LLM agents capable of solving complex problems, and enhancing LLM reasoning. **My current focus is on teaching LLMs to continually learn** (e.g., <a href="https://arxiv.org/abs/2602.02301">MGS</a> for resolving gradient conflicts and mitigating interference when learning across domains) — stay tuned for more work coming soon!
+I have broad interests in ML and NLP, particularly in understanding the mechanisms behind neural language models, developing LLM agents capable of solving complex problems, and enhancing LLM reasoning. **My current focus is on teaching LLMs to continually learn** (e.g., <a href="https://arxiv.org/abs/2602.02301">MGS</a> for resolving gradient conflicts when learning across domains, and <a href="https://arxiv.org/abs/2610.16523">EAU</a> for co-evolving agents with the environments they learn in) — stay tuned for more work coming soon!
 
 # News
 
 <div class="news-list">
+  <div class="news-item">
+    <span class="news-date">Aug 2026</span>
+    <span class="news-text"><a href="https://arxiv.org/abs/2606.16360">Tyler</a> accepted to <strong>EMNLP 2026</strong>.</span>
+  </div>
   <div class="news-item">
     <span class="news-date">Jun 2025</span>
     <span class="news-text">Starting my PhD at the University of Alberta, advised by <a href="https://xiye17.github.io">Dr. Xi Ye</a>.</span>
@@ -77,6 +81,16 @@ I have broad interests in ML and NLP, particularly in understanding the mechanis
         <div class="ptree-leaf">
           <span class="ptree-leaf-venue">ICLR 2025</span>
           <a class="ptree-leaf-title" href="https://arxiv.org/abs/2408.10635" target="_blank" rel="noopener">Strategist: Learning Strategic Skills by LLMs via Bi-Level Tree Search</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ptree-branch">
+      <div class="ptree-cat-label">Agent Training</div>
+      <div class="ptree-leaves">
+        <div class="ptree-leaf">
+          <span class="ptree-leaf-venue">arXiv 2026</span>
+          <a class="ptree-leaf-title" href="https://arxiv.org/abs/2610.16523" target="_blank" rel="noopener">EAU: Environment-Agent-User Co-evolution for Training User-Centric Agents</a>
         </div>
       </div>
     </div>
