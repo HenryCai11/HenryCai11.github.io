@@ -15,6 +15,10 @@ I have broad interests in ML and NLP, particularly in understanding the mechanis
 
 <div class="news-list">
   <div class="news-item">
+    <span class="news-date">Oct 2026</span>
+    <span class="news-text">New preprint: <a href="https://arxiv.org/abs/2610.16523">EAU</a>, a meta-agent framework for environment&ndash;agent&ndash;user co-evolution.</span>
+  </div>
+  <div class="news-item">
     <span class="news-date">Aug 2026</span>
     <span class="news-text"><a href="https://arxiv.org/abs/2606.16360">Tyler</a> accepted to <strong>EMNLP 2026</strong>.</span>
   </div>
