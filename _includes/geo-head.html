@@ -1,0 +1,67 @@
+<!-- GEO: machine-readable identity for search and answer engines -->
+{% assign geo_url = page.url | replace: "index.html", "" | prepend: site.url %}
+{% assign geo_title = site.name %}{% if page.title and page.title != "About" %}{% assign geo_title = page.title | append: " — " | append: site.name %}{% endif %}
+<link rel="canonical" href="{{ geo_url }}">
+<meta property="og:type" content="{% if page.url == "/" %}profile{% else %}website{% endif %}">
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:title" content="{{ geo_title }}">
+<meta property="og:description" content="{{ site.description }}">
+<meta property="og:url" content="{{ geo_url }}">
+<meta property="og:image" content="{{ site.url }}/images/profile.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="{{ geo_title }}">
+<meta name="twitter:description" content="{{ site.description }}">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "{{ site.url }}/#person",
+  "name": "Min Cai",
+  "alternateName": ["蔡旻", "HenryCai11"],
+  "url": "{{ site.url }}/",
+  "image": "{{ site.url }}/images/profile.png",
+  "jobTitle": "PhD Student",
+  "description": "PhD student at the University of Alberta, supervised by Dr. Xi Ye. Works on LLM agents, LLM reasoning, mechanistic interpretability, and teaching LLMs to continually learn.",
+  "affiliation": {"@type": "CollegeOrUniversity", "name": "University of Alberta", "address": "Edmonton, Canada"},
+  "alumniOf": [
+    {"@type": "CollegeOrUniversity", "name": "Shenzhen University"},
+    {"@type": "CollegeOrUniversity", "name": "Beijing Language and Culture University"}
+  ],
+  "homeLocation": {"@type": "Place", "name": "Edmonton, Canada"},
+  "sameAs": [
+    "https://scholar.google.com/citations?user=QMTSC0oAAAAJ",
+    "https://github.com/HenryCai11",
+    "https://orcid.org/0000-0002-3694-7875"
+  ],
+  "colleague": [
+    {"@type": "Person", "name": "Xi Ye", "url": "https://xiye17.github.io"},
+    {"@type": "Person", "name": "Dan Zhang", "url": "https://zhangdan0602.github.io"},
+    {"@type": "Person", "name": "Ziniu Hu", "url": "https://acbull.github.io"},
+    {"@type": "Person", "name": "Shichang Zhang", "url": "https://shichangzh.github.io"},
+    {"@type": "Person", "name": "Difan Zou", "url": "https://difanzou.github.io"}
+  ],
+  "hasOccupation": [
+    {"@type": "Occupation", "name": "Research Intern at Baidu (Oct 2025 - Mar 2026)"},
+    {"@type": "Occupation", "name": "Research Intern at Z.ai (Aug 2024 - Jul 2025)"}
+  ],
+  "knowsAbout": ["LLM agents", "LLM reasoning", "mechanistic interpretability", "continual learning", "post-training", "reward modeling", "strategic reasoning"]
+}
+</script>
+{% if page.url == "/" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {"@type": "ScholarlyArticle", "name": "AvalonBench: Evaluating LLMs Playing the Game of Avalon", "author": {"@id": "{{ site.url }}/#person"}, "url": "https://arxiv.org/abs/2310.05036", "datePublished": "2023", "isPartOf": {"@type": "CreativeWork", "name": "NeurIPS 2023 Foundation Models for Decision Making Workshop"}, "keywords": ["LLM agents", "Avalon", "social deduction game", "agent evaluation"]},
+    {"@type": "ScholarlyArticle", "name": "DataSciBench: An LLM Agent Benchmark for Data Science", "author": {"@id": "{{ site.url }}/#person"}, "url": "https://arxiv.org/abs/2502.13897", "datePublished": "2026", "isPartOf": {"@type": "CreativeWork", "name": "Findings of ACL 2026"}, "keywords": ["LLM agents", "data science agent", "benchmark"]},
+    {"@type": "ScholarlyArticle", "name": "Strategist: Learning Strategic Skills by LLMs via Bi-Level Tree Search", "author": {"@id": "{{ site.url }}/#person"}, "url": "https://arxiv.org/abs/2408.10635", "datePublished": "2025", "isPartOf": {"@type": "CreativeWork", "name": "ICLR 2025"}, "keywords": ["strategic reasoning", "LLM agents", "tree search", "Avalon", "social deduction game"]},
+    {"@type": "ScholarlyArticle", "name": "EAU: Environment-Agent-User Co-evolution for Training User-Centric Agents", "author": {"@id": "{{ site.url }}/#person"}, "url": "https://arxiv.org/abs/2610.16523", "datePublished": "2026", "isPartOf": {"@type": "CreativeWork", "name": "arXiv preprint"}, "keywords": ["agent training", "co-evolution", "user-centric agents"]},
+    {"@type": "ScholarlyArticle", "name": "How Post-Training Reshapes LLMs: A Mechanistic View on Knowledge, Truthfulness, Refusal, and Confidence", "author": {"@id": "{{ site.url }}/#person"}, "url": "https://arxiv.org/abs/2504.02904", "datePublished": "2025", "isPartOf": {"@type": "CreativeWork", "name": "COLM 2025"}, "award": "Outstanding Paper, New England NLP Workshop", "keywords": ["mechanistic interpretability", "post-training", "truthfulness and refusal"]},
+    {"@type": "ScholarlyArticle", "name": "Self-Control of LLM Behaviors by Compressing Suffix Gradient into Prefix Controller", "alternateName": "SelfControl", "author": {"@id": "{{ site.url }}/#person"}, "url": "https://arxiv.org/abs/2406.02721", "datePublished": "2024", "isPartOf": {"@type": "CreativeWork", "name": "ICML 2024 Workshops (Mechanistic Interpretability; Foundation Models in the Wild)"}, "keywords": ["behavior control", "suffix gradient", "mechanistic interpretability"]},
+    {"@type": "ScholarlyArticle", "name": "TDRM: Smooth Reward Models with Temporal Difference for LLM RL and Inference", "author": {"@id": "{{ site.url }}/#person"}, "url": "https://arxiv.org/abs/2509.15110", "datePublished": "2025", "isPartOf": {"@type": "CreativeWork", "name": "arXiv preprint"}, "keywords": ["reward model", "temporal difference", "reinforcement learning"]},
+    {"@type": "ScholarlyArticle", "name": "Advancing General-Purpose Reasoning Models with Modular Gradient Surgery", "alternateName": "MGS", "author": {"@id": "{{ site.url }}/#person"}, "url": "https://arxiv.org/abs/2602.02301", "datePublished": "2026", "isPartOf": {"@type": "CreativeWork", "name": "arXiv preprint"}, "keywords": ["reasoning models", "gradient conflict", "gradient surgery", "continual learning"]},
+    {"@type": "ScholarlyArticle", "name": "Tyler: Typed Latent Reasoning for Language Models", "author": {"@id": "{{ site.url }}/#person"}, "url": "https://arxiv.org/abs/2606.16360", "datePublished": "2026", "isPartOf": {"@type": "CreativeWork", "name": "EMNLP 2026"}, "keywords": ["latent reasoning", "LLM reasoning"]}
+  ]
+}
+</script>
+{% endif %}

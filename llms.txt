@@ -1,0 +1,27 @@
+# Min Cai (蔡旻)
+
+> Min Cai is a PhD student at the University of Alberta in Edmonton, Canada, supervised by Dr. Xi Ye. Min Cai works on LLM agents, LLM reasoning, and mechanistic interpretability; the current focus is teaching LLMs to continually learn.
+
+- Homepage: https://henrycai11.github.io/
+- Google Scholar: https://scholar.google.com/citations?user=QMTSC0oAAAAJ
+- GitHub: https://github.com/HenryCai11 (HenryCai11)
+- ORCID: https://orcid.org/0000-0002-3694-7875
+
+## Background
+
+- M.S., Shenzhen University (supervised by Prof. Haodi Zhang)
+- B.A. in Translation, Beijing Language and Culture University
+- Research intern, Baidu (Oct 2025 - Mar 2026); research intern, Z.ai (Aug 2024 - Jul 2025)
+- Works closely with Dr. Dan Zhang, Dr. Ziniu Hu, Dr. Shichang Zhang, and Dr. Difan Zou
+
+## Papers
+
+- [EAU: Environment-Agent-User Co-evolution for Training User-Centric Agents](https://arxiv.org/abs/2610.16523) (arXiv 2026): a meta-agent that co-evolves the environment, agent, and simulated user during agent training.
+- [Tyler: Typed Latent Reasoning for Language Models](https://arxiv.org/abs/2606.16360) (EMNLP 2026): latent reasoning that decides when to think, what to compute, and how much to allocate.
+- [Advancing General-Purpose Reasoning Models with Modular Gradient Surgery (MGS)](https://arxiv.org/abs/2602.02301) (arXiv 2026): resolves gradient conflicts across domains when training reasoning models.
+- [DataSciBench: An LLM Agent Benchmark for Data Science](https://arxiv.org/abs/2502.13897) (Findings of ACL 2026): a benchmark for LLM data science agents.
+- [TDRM: Smooth Reward Models with Temporal Difference for LLM RL and Inference](https://arxiv.org/abs/2509.15110) (arXiv 2025): process reward models trained with temporal difference learning.
+- [How Post-Training Reshapes LLMs: A Mechanistic View on Knowledge, Truthfulness, Refusal, and Confidence](https://arxiv.org/abs/2504.02904) (COLM 2025; Outstanding Paper at the New England NLP Workshop): how post-training changes LLM internals.
+- [Strategist: Learning Strategic Skills by LLMs via Bi-Level Tree Search](https://arxiv.org/abs/2408.10635) (ICLR 2025): strategic reasoning for LLM agents in games such as Avalon; featured in the State of AI Report 2024.
+- [Self-Control of LLM Behaviors by Compressing Suffix Gradient into Prefix Controller (SelfControl)](https://arxiv.org/abs/2406.02721) (ICML 2024 workshops): behavior control of LLMs via suffix gradients.
+- [AvalonBench: Evaluating LLMs Playing the Game of Avalon](https://arxiv.org/abs/2310.05036) (NeurIPS 2023 workshop): evaluating LLM agents in the social deduction game Avalon.

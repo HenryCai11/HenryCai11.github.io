@@ -10,7 +10,7 @@ locale                   : "en-US"
 title                    : "Min Cai's Academic Webpage"
 title_separator          : "-"
 name                     : &name "Min Cai"
-description              : &description "personal description"
+description              : &description "Min Cai (蔡旻) is a PhD student at the University of Alberta in Edmonton, Canada, supervised by Dr. Xi Ye. Research on LLM agents, LLM reasoning, mechanistic interpretability, and continual learning."
 url                      : https://HenryCai11.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "HenryCai11/HenryCai11.github.io"
@@ -85,7 +85,7 @@ author:
   name             : "Min Cai"
   avatar           : "profile.png"
   bio              : "The avatar is one of my favourite pokémons, Snorlax."
-  location         : "Beijing, China"
+  location         : "Edmonton, Canada"
   employer         :
   pubmed           : "https://scholar.google.com/citations?user=QMTSC0oAAAAJ&hl=en"
   googlescholar    : "https://scholar.google.com/citations?user=QMTSC0oAAAAJ&hl=en"
@@ -125,6 +125,7 @@ include:
   - _pages
   - files
 exclude:
+  - _publications  # template sample papers; real papers live on the homepage
   - "*.sublime-project"
   - "*.sublime-workspace"
   - .asset-cache
@@ -181,7 +182,7 @@ collections:
     output: true
     permalink: /:collection/:path/
   publications:
-    output: true
+    output: false
     permalink: /:collection/:path/
   portfolio:
     output: true
