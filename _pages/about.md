@@ -15,6 +15,10 @@ I have broad interests in ML and NLP, particularly in understanding the mechanis
 
 <div class="news-list">
   <div class="news-item">
+    <span class="news-date">Nov 2026</span>
+    <span class="news-text"><a href="https://arxiv.org/abs/2610.16523">EAU</a> accepted as an <strong>Oral</strong> at the Meta-Agent Workshop @ <strong>NeurIPS 2026</strong>.</span>
+  </div>
+  <div class="news-item">
     <span class="news-date">Oct 2026</span>
     <span class="news-text">New preprint: <a href="https://arxiv.org/abs/2610.16523">EAU</a>, a meta-agent framework for environment&ndash;agent&ndash;user co-evolution.</span>
   </div>
@@ -95,6 +99,7 @@ I have broad interests in ML and NLP, particularly in understanding the mechanis
         <div class="ptree-leaf">
           <span class="ptree-leaf-venue">arXiv 2026</span>
           <a class="ptree-leaf-title" href="https://arxiv.org/abs/2610.16523" target="_blank" rel="noopener">EAU: Environment-Agent-User Co-evolution for Training User-Centric Agents</a>
+          <span class="ptree-leaf-award">★ Oral — Meta-Agent Workshop @ NeurIPS 2026</span>
         </div>
       </div>
     </div>
