@@ -89,6 +89,7 @@ I have broad interests in ML and NLP, particularly in understanding the mechanis
         <div class="ptree-leaf">
           <span class="ptree-leaf-venue">ICLR 2025</span>
           <a class="ptree-leaf-title" href="https://arxiv.org/abs/2408.10635" target="_blank" rel="noopener">Strategist: Learning Strategic Skills by LLMs via Bi-Level Tree Search</a>
+          <span class="ptree-leaf-award">★ Featured in the State of AI Report 2024</span>
         </div>
       </div>
     </div>
