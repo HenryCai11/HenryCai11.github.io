@@ -9,18 +9,18 @@ redirect_from:
 
 Hi, I'm **Min Cai (蔡旻)**. I'm a PhD student at the University of Alberta, supervised by <a href="https://xiye17.github.io">Dr. Xi Ye</a>. Previously, I was an M.S. student graduated from Shenzhen University, where I was supervised by <a href="https://hdzhangust.github.io">Prof. Haodi Zhang</a>. Before that, I obtained my B.A. in Translation from Beijing Language and Culture University. I also work closely with <a href="https://zhangdan0602.github.io">Dr. Dan Zhang</a>, <a href="https://acbull.github.io">Dr. Ziniu Hu</a>, <a href="https://shichangzh.github.io">Dr. Shichang Zhang</a>, and <a href="https://difanzou.github.io">Dr. Difan Zou</a>.
 
-I have broad interests in ML and NLP, particularly in understanding the mechanisms behind neural language models, developing LLM agents capable of solving complex problems, and enhancing LLM reasoning. **My current focus is on teaching LLMs to continually learn** (e.g., <a href="https://arxiv.org/abs/2602.02301">MGS</a> for resolving gradient conflicts when learning across domains, and <a href="https://arxiv.org/abs/2610.16523">EAU</a> for co-evolving agents with the environments they learn in) — stay tuned for more work coming soon!
+I have broad interests in ML and NLP, particularly in understanding the mechanisms behind neural language models, developing LLM agents capable of solving complex problems, and enhancing LLM reasoning. **My current focus is on teaching LLMs to continually learn** (e.g., <a href="https://arxiv.org/abs/2602.02301">MGS</a> for resolving gradient conflicts when learning across domains, and <a href="https://www.alphaxiv.org/abs/2610.16523">EAU</a> for co-evolving agents with the environments they learn in) — stay tuned for more work coming soon!
 
 # News
 
 <div class="news-list">
   <div class="news-item">
     <span class="news-date">Nov 2026</span>
-    <span class="news-text"><a href="https://arxiv.org/abs/2610.16523">EAU</a> accepted as an <strong>Oral</strong> at the Meta-Agent Workshop @ <strong>NeurIPS 2026</strong>.</span>
+    <span class="news-text"><a href="https://www.alphaxiv.org/abs/2610.16523">EAU</a> accepted as an <strong>Oral</strong> at the Meta-Agent Workshop @ <strong>NeurIPS 2026</strong>.</span>
   </div>
   <div class="news-item">
     <span class="news-date">Oct 2026</span>
-    <span class="news-text">New preprint: <a href="https://arxiv.org/abs/2610.16523">EAU</a>, a meta-agent framework for environment&ndash;agent&ndash;user co-evolution.</span>
+    <span class="news-text">New preprint: <a href="https://www.alphaxiv.org/abs/2610.16523">EAU</a>, a meta-agent framework for environment&ndash;agent&ndash;user co-evolution.</span>
   </div>
   <div class="news-item">
     <span class="news-date">Aug 2026</span>
@@ -99,7 +99,7 @@ I have broad interests in ML and NLP, particularly in understanding the mechanis
       <div class="ptree-leaves">
         <div class="ptree-leaf">
           <span class="ptree-leaf-venue">arXiv 2026</span>
-          <a class="ptree-leaf-title" href="https://arxiv.org/abs/2610.16523" target="_blank" rel="noopener">EAU: Environment-Agent-User Co-evolution for Training User-Centric Agents</a>
+          <a class="ptree-leaf-title" href="https://www.alphaxiv.org/abs/2610.16523" target="_blank" rel="noopener">EAU: Environment-Agent-User Co-evolution for Training User-Centric Agents</a>
           <span class="ptree-leaf-award">★ Oral — Meta-Agent Workshop @ NeurIPS 2026</span>
         </div>
       </div>
